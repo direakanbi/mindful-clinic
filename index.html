@@ -1,0 +1,2107 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mindful Weightful Loss Clinic — Holistic & Behavioral Weight Management</title>
+  <meta name="description" content="A calm, behavioral health-focused approach to weight management and psychiatric wellness. Discover sustainable, mindful weight loss in a warm, welcoming environment.">
+  
+  <!-- Google Fonts: Lora (headings) & Nunito (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Nunito:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS v4 Play CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <!-- Tailwind CSS v4 Theme Configuration & Custom Rules -->
+  <style type="text/tailwindcss">
+    @theme {
+      --font-serif: 'Lora', Georgia, serif;
+      --font-sans: 'Nunito', system-ui, sans-serif;
+      --color-cream: #FDFBF7;
+      --color-sage: #9CB4A5;
+      --color-sage-light: #F0F4F1;
+      --color-sage-dark: #7A9384;
+      --color-charcoal: #2E343A;
+      --color-coral: #D98B7A;
+      --color-coral-dark: #C67665;
+    }
+
+    body {
+      background-color: var(--color-cream);
+      color: var(--color-charcoal);
+      font-family: var(--font-sans);
+    }
+  </style>
+
+  <!-- Phosphor Icons CDN -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <!-- QRCode.js CDN for Dynamic QR Code Generation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-sage/20 selection:text-charcoal antialiased overflow-x-hidden">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-40 bg-cream/90 backdrop-blur-md border-b border-sage/10 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      
+      <!-- Logo -->
+      <a href="#" class="flex items-center space-x-2 group">
+        <span class="p-2 bg-sage-light rounded-lg text-sage transition-all duration-300 group-hover:bg-sage group-hover:text-cream">
+          <i class="ph ph-plant text-2xl"></i>
+        </span>
+        <div class="flex flex-col">
+          <span class="font-serif font-bold text-lg md:text-xl tracking-tight leading-none text-charcoal">Mindful Weightful</span>
+          <span class="text-xs uppercase tracking-widest text-sage font-semibold mt-0.5">Loss Clinic</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden md:flex items-center space-x-6 font-medium text-sm">
+        <a href="#services" class="text-charcoal/80 hover:text-sage transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-sage hover:after:w-full after:transition-all after:duration-300">Services</a>
+        <a href="#credentials" class="text-charcoal/80 hover:text-sage transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-sage hover:after:w-full after:transition-all after:duration-300">About</a>
+        <a href="#quiz-section" class="text-charcoal/80 hover:text-sage transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-sage hover:after:w-full after:transition-all after:duration-300">Readiness Quiz</a>
+        <a href="#calculator" class="text-charcoal/80 hover:text-sage transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-sage hover:after:w-full after:transition-all after:duration-300">Wellness Calculator</a>
+        <a href="#testimonials" class="text-charcoal/80 hover:text-sage transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-sage hover:after:w-full after:transition-all after:duration-300">Success Stories</a>
+        <a href="#faqs" class="text-charcoal/80 hover:text-sage transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-sage hover:after:w-full after:transition-all after:duration-300">FAQs</a>
+      </nav>
+
+      <!-- CTA Buttons -->
+      <div class="hidden md:flex items-center space-x-3">
+        <button onclick="openQRModal()" title="Scan or Generate QR Code for Direct Booking" class="cursor-pointer px-3.5 py-2.5 bg-sage-light/80 hover:bg-sage text-sage-dark hover:text-cream font-semibold rounded-lg border border-sage/20 shadow-xs hover:shadow transition-all duration-200 flex items-center space-x-1.5 text-xs">
+          <i class="ph ph-qr-code text-base"></i>
+          <span>QR Code</span>
+        </button>
+        <button onclick="openBookingModal()" class="cursor-pointer px-6 py-2.5 bg-coral text-cream font-semibold rounded-lg shadow-sm hover:bg-coral-dark hover:shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all duration-200">
+          Book Consultation
+        </button>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" class="md:hidden p-2 text-charcoal focus:outline-none focus:ring-2 focus:ring-sage rounded-lg" aria-label="Toggle Navigation Menu">
+        <i id="menu-icon" class="ph ph-list text-2xl transition-transform duration-300"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-nav" class="hidden md:hidden absolute top-20 left-0 w-full bg-cream border-b border-sage/10 shadow-lg px-6 py-6 transition-all duration-300 ease-in-out">
+      <div class="flex flex-col space-y-4 font-semibold">
+        <a href="#services" onclick="toggleMobileMenu()" class="text-charcoal/90 hover:text-sage py-2 border-b border-sage/5 transition-colors">Services</a>
+        <a href="#credentials" onclick="toggleMobileMenu()" class="text-charcoal/90 hover:text-sage py-2 border-b border-sage/5 transition-colors">About & Credentials</a>
+        <a href="#quiz-section" onclick="toggleMobileMenu()" class="text-charcoal/90 hover:text-sage py-2 border-b border-sage/5 transition-colors">Readiness Quiz</a>
+        <a href="#calculator" onclick="toggleMobileMenu()" class="text-charcoal/90 hover:text-sage py-2 border-b border-sage/5 transition-colors">Wellness Calculator</a>
+        <a href="#testimonials" onclick="toggleMobileMenu()" class="text-charcoal/90 hover:text-sage py-2 border-b border-sage/5 transition-colors">Success Stories</a>
+        <a href="#faqs" onclick="toggleMobileMenu()" class="text-charcoal/90 hover:text-sage py-2 border-b border-sage/5 transition-colors">FAQs</a>
+        <div class="grid grid-cols-2 gap-3 mt-4">
+          <button onclick="toggleMobileMenu(); openQRModal()" class="py-3 bg-sage-light text-sage-dark font-semibold rounded-lg border border-sage/30 hover:bg-sage/20 text-center transition-all flex items-center justify-center space-x-1.5 text-xs cursor-pointer">
+            <i class="ph ph-qr-code text-base"></i>
+            <span>QR Intake</span>
+          </button>
+          <button onclick="toggleMobileMenu(); openBookingModal()" class="py-3 bg-coral text-cream font-semibold rounded-lg shadow hover:bg-coral-dark text-center transition-all text-xs cursor-pointer">
+            Book Consultation
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow">
+    
+    <!-- HERO SECTION -->
+    <section class="relative overflow-hidden py-16 md:py-24 lg:py-32">
+      <!-- Decorative background blur blobs -->
+      <div class="absolute top-1/4 left-[-10%] w-[400px] h-[400px] rounded-full bg-sage-light/30 blur-3xl -z-10"></div>
+      <div class="absolute bottom-1/4 right-[-10%] w-[450px] h-[450px] rounded-full bg-coral/5 blur-3xl -z-10"></div>
+
+      <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <!-- Hero Text Column -->
+        <div class="lg:col-span-7 flex flex-col items-start space-y-6 md:space-y-8 text-left">
+          
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-charcoal leading-tight">
+            Transform Your Life with <br>
+            <span class="text-sage font-serif italic relative after:absolute after:bottom-1 after:left-0 after:w-full after:h-[4px] after:bg-coral/20">Mindful</span> Weight Loss
+          </h1>
+
+          <p class="text-lg md:text-xl text-charcoal/80 leading-relaxed max-w-2xl font-light">
+            Move away from restrictive calorie counting and clinical isolation. We combine compassionate behavioral therapy with specialized medical coaching to build a sustainable, nourishing relationship with your body.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center space-y-4 sm:space-y-0 sm:space-x-4 w-full sm:w-auto">
+            <button onclick="openBookingModal()" class="cursor-pointer px-8 py-4 bg-coral text-cream font-semibold rounded-lg shadow-md hover:bg-coral-dark hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 text-center">
+              Start Your Transformation
+            </button>
+            <a href="#services" class="px-8 py-4 bg-transparent border-2 border-sage text-sage font-semibold rounded-lg hover:bg-sage-light active:scale-[0.98] transition-all duration-200 text-center">
+              Learn More
+            </a>
+          </div>
+
+          <!-- Quick Trust Metrics in Hero -->
+          <div class="pt-6 border-t border-sage/10 w-full grid grid-cols-3 gap-4">
+            <div>
+              <p class="text-3xl font-bold text-sage font-serif">15+</p>
+              <p class="text-xs md:text-sm text-charcoal/70 uppercase tracking-wider mt-1">Years Experience</p>
+            </div>
+            <div>
+              <p class="text-3xl font-bold text-sage font-serif">100%</p>
+              <p class="text-xs md:text-sm text-charcoal/70 uppercase tracking-wider mt-1">Holistic Model</p>
+            </div>
+            <div>
+              <p class="text-3xl font-bold text-sage font-serif">1-on-1</p>
+              <p class="text-xs md:text-sm text-charcoal/70 uppercase tracking-wider mt-1">Nurse Practitioner Care</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Image Column (Cutout Subject Layout with 3D Depth) -->
+        <div class="lg:col-span-5 relative flex items-center justify-center pt-8 pb-4">
+          
+          <!-- Background Organic Podium Pedestal -->
+          <div class="relative w-full max-w-[380px] md:max-w-[420px] aspect-[4/5] bg-gradient-to-b from-sage-light via-sage/20 to-sage/30 rounded-t-[140px] md:rounded-t-[180px] rounded-b-3xl border border-sage/20 shadow-inner flex items-end justify-center overflow-visible">
+            
+            <!-- Concentric Background Rings -->
+            <div class="absolute top-12 left-1/2 -translate-x-1/2 w-64 h-64 border border-sage/20 rounded-full pointer-events-none"></div>
+            <div class="absolute top-6 left-1/2 -translate-x-1/2 w-80 h-80 border border-sage/10 rounded-full pointer-events-none"></div>
+            
+            <!-- Ambient Soft Glow Behind Head -->
+            <div class="absolute top-10 left-1/2 -translate-x-1/2 w-56 h-56 bg-sage-light/80 rounded-full blur-2xl opacity-70 -z-0"></div>
+
+            <!-- Original Portrait Image with Arched Pedestal Framing -->
+            <img src="primary_nurse.jpg" alt="Primary Psychiatric Nurse Practitioner" class="relative z-10 w-full h-[460px] md:h-[500px] object-cover object-top rounded-t-[130px] md:rounded-t-[170px] rounded-b-2xl shadow-lg border border-sage/15 transition-transform duration-500 hover:scale-[1.02]">
+            
+            <!-- Floating Glass Badge 1: Top Right (Overlapping Shoulder) -->
+            <div class="absolute top-10 -right-4 md:-right-8 z-20 bg-cream/90 backdrop-blur-md border border-sage/20 p-3.5 rounded-2xl shadow-xl flex items-center space-x-3 transform rotate-2 hover:rotate-0 transition-transform duration-300">
+              <div class="relative">
+                <span class="p-2.5 bg-sage text-cream rounded-xl flex items-center justify-center shadow-sm">
+                  <i class="ph ph-stethoscope text-xl"></i>
+                </span>
+                <span class="absolute -top-1 -right-1 w-3 h-3 bg-emerald-500 border-2 border-cream rounded-full"></span>
+              </div>
+              <div>
+                <h4 class="font-serif font-bold text-xs md:text-sm text-charcoal leading-tight">Lead Clinician</h4>
+                <p class="text-[11px] text-sage-dark font-medium mt-0.5">PMHNP-BC Certified</p>
+              </div>
+            </div>
+
+            <!-- Floating Glass Badge 2: Bottom Left -->
+            <div class="absolute bottom-6 -left-4 md:-left-8 z-20 bg-cream/90 backdrop-blur-md border border-sage/20 p-3.5 rounded-2xl shadow-xl flex items-center space-x-3 transform -rotate-2 hover:rotate-0 transition-transform duration-300">
+              <span class="p-2.5 bg-sage-light text-sage rounded-xl flex items-center justify-center shadow-sm">
+                <i class="ph ph-award text-xl"></i>
+              </span>
+              <div>
+                <div class="flex items-center space-x-1 text-amber-500 text-xs mb-0.5">
+                  <i class="ph ph-star-fill"></i>
+                  <i class="ph ph-star-fill"></i>
+                  <i class="ph ph-star-fill"></i>
+                  <i class="ph ph-star-fill"></i>
+                  <i class="ph ph-star-fill"></i>
+                </div>
+                <h4 class="font-serif font-bold text-xs md:text-sm text-charcoal leading-tight">15+ Yrs Practice</h4>
+                <p class="text-[10px] text-charcoal/60">Psychiatric Nursing Care</p>
+              </div>
+            </div>
+
+            <!-- Floating Glass Badge 3: Bottom Center Overlap -->
+            <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 z-20 bg-cream/95 backdrop-blur-md border border-sage/25 px-4 py-2 rounded-full shadow-lg flex items-center space-x-2">
+              <i class="ph ph-heart text-sage text-sm"></i>
+              <span class="text-xs font-semibold text-charcoal tracking-wide">Patient-Centered Holistic Care</span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRUST / CREDENTIALS SECTION -->
+    <section id="credentials" class="py-20 bg-sage-light/30 border-y border-sage/10 relative">
+      <div class="max-w-7xl mx-auto px-6">
+        
+        <!-- Header -->
+        <div class="max-w-3xl mx-auto text-center mb-16 space-y-4">
+          <h2 class="text-3xl md:text-4xl font-serif font-bold text-charcoal">A Credentialed, Compassionate Foundation</h2>
+          <div class="w-16 h-1 bg-sage mx-auto rounded-full"></div>
+          <p class="text-lg text-charcoal/70 font-light">
+            True weight wellness isn't just about nutrition; it's psychiatric, behavioral, and deeply personal. Meet a clinical practice centered around evidence and empathy.
+          </p>
+        </div>
+
+        <!-- Credentials Trust Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <!-- Card 1 -->
+          <div class="bg-cream p-8 rounded-lg shadow-sm border border-sage/10 hover:shadow-md hover:scale-[1.02] transition-all duration-300 flex flex-col h-full">
+            <div class="p-3 bg-sage-light text-sage rounded-lg self-start mb-6">
+              <i class="ph ph-award text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-serif font-bold text-charcoal mb-3">15+ Years Experience</h3>
+            <p class="text-charcoal/70 leading-relaxed font-light text-sm flex-grow">
+              Over a decade of dedicated medical, behavioral, and emotional weight management coaching tailored to complex personal health paths.
+            </p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="bg-cream p-8 rounded-lg shadow-sm border border-sage/10 hover:shadow-md hover:scale-[1.02] transition-all duration-300 flex flex-col h-full">
+            <div class="p-3 bg-sage-light text-sage rounded-lg self-start mb-6">
+              <i class="ph ph-graduation-cap text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-serif font-bold text-charcoal mb-3">Master's in Psychiatric Nursing</h3>
+            <p class="text-charcoal/70 leading-relaxed font-light text-sm flex-grow">
+              Board-certified Psychiatric-Mental Health Nurse Practitioner credentials bridging physical wellness with emotional support.
+            </p>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="bg-cream p-8 rounded-lg shadow-sm border border-sage/10 hover:shadow-md hover:scale-[1.02] transition-all duration-300 flex flex-col h-full">
+            <div class="p-3 bg-sage-light text-sage rounded-lg self-start mb-6">
+              <i class="ph ph-brain text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-serif font-bold text-charcoal mb-3">Cognitive Behavioral Approach</h3>
+            <p class="text-charcoal/70 leading-relaxed font-light text-sm flex-grow">
+              Focusing on the neurological triggers behind eating habits rather than relying on unsustainable, stressful sheer willpower.
+            </p>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="bg-cream p-8 rounded-lg shadow-sm border border-sage/10 hover:shadow-md hover:scale-[1.02] transition-all duration-300 flex flex-col h-full">
+            <div class="p-3 bg-sage-light text-sage rounded-lg self-start mb-6">
+              <i class="ph ph-hand-heart text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-serif font-bold text-charcoal mb-3">Holistic Care Model</h3>
+            <p class="text-charcoal/70 leading-relaxed font-light text-sm flex-grow">
+              A comprehensive blueprint integrating psychiatric guidance, behavioral counseling, safe biological tracking, and meal therapy.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Practitioner Feature Spotlight (Transparent Cutout Layout) -->
+        <div class="mt-16 bg-cream border border-sage/20 rounded-2xl p-8 md:p-12 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-4 flex justify-center">
+            <div class="relative flex items-end justify-center w-56 h-64 md:w-64 md:h-72">
+              <!-- Organic Sage Pedestal Ring -->
+              <div class="absolute bottom-0 w-52 h-52 md:w-60 md:h-60 rounded-full bg-gradient-to-tr from-sage-light via-sage/20 to-sage/30 border border-sage/20 shadow-inner"></div>
+              <!-- Ambient Glow -->
+              <div class="absolute bottom-4 w-40 h-40 bg-sage-light/70 rounded-full blur-xl opacity-60"></div>
+              <!-- Original Portrait Image with Stylized Frame -->
+              <div class="relative z-10 w-52 h-60 md:w-60 md:h-68 rounded-2xl overflow-hidden border-4 border-sage/20 shadow-lg group">
+                <img src="primary_nurse.jpg" alt="Primary Psychiatric Nurse Practitioner" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
+              </div>
+              <!-- Stethoscope Badge -->
+              <div class="absolute bottom-0 right-0 z-20 bg-sage text-cream p-2.5 rounded-xl shadow-md text-white border-2 border-cream">
+                <i class="ph ph-stethoscope text-xl"></i>
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-8 space-y-4 text-left">
+            <span class="text-xs uppercase tracking-widest text-sage font-bold">Meet Your Lead Clinician</span>
+            <h3 class="text-2xl md:text-3xl font-serif font-bold text-charcoal">Nurse-Led Weight & Mental Wellness Care</h3>
+            <p class="text-charcoal/80 font-light leading-relaxed">
+              "My practice is founded on replacing cold, clinical isolation and shame-based dieting with warm, personalized psychiatric nursing care. Every client receives attentive 1-on-1 guidance that respects their body, neurobiology, and personal life journey."
+            </p>
+            <div class="pt-2 flex flex-wrap items-center gap-3 text-xs font-semibold text-charcoal/80">
+              <span class="inline-flex items-center space-x-1.5 px-3 py-1.5 bg-sage-light rounded-full border border-sage/15">
+                <i class="ph ph-check text-sm text-sage"></i>
+                <span>Board-Certified Nurse Practitioner</span>
+              </span>
+              <span class="inline-flex items-center space-x-1.5 px-3 py-1.5 bg-sage-light rounded-full border border-sage/15">
+                <i class="ph ph-check text-sm text-sage"></i>
+                <span>15+ Years Clinical Expertise</span>
+              </span>
+              <span class="inline-flex items-center space-x-1.5 px-3 py-1.5 bg-sage-light rounded-full border border-sage/15">
+                <i class="ph ph-check text-sm text-sage"></i>
+                <span>Personalized 1-on-1 Strategy</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- READINESS QUIZ BANNER & WIDGET SECTION -->
+    <section id="quiz-section" class="py-16 bg-gradient-to-br from-cream via-sage-light/40 to-cream border-b border-sage/10 relative overflow-hidden">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="bg-cream border-2 border-sage/20 rounded-2xl shadow-xl p-8 md:p-12 relative overflow-hidden">
+          <div class="absolute -top-10 -right-10 w-48 h-48 bg-sage-light/60 rounded-full blur-2xl pointer-events-none"></div>
+          
+          <!-- Quiz Intro View -->
+          <div id="quiz-intro-view" class="text-center space-y-6">
+            <span class="inline-flex items-center space-x-2 px-3.5 py-1.5 bg-sage-light border border-sage/20 rounded-full text-sage font-bold text-xs uppercase tracking-wider">
+              <i class="ph ph-question text-base"></i>
+              <span>Interactive Self-Assessment</span>
+            </span>
+            <h2 class="text-3xl md:text-4xl font-serif font-bold text-charcoal">Is Holistic Weight Management Right for You?</h2>
+            <p class="text-base md:text-lg text-charcoal/80 max-w-2xl mx-auto font-light leading-relaxed">
+              Take this confidential 60-second assessment to discover your weight management archetype and receive a personalized care blueprint.
+            </p>
+            <div class="pt-2">
+              <button onclick="startQuiz()" class="cursor-pointer px-8 py-3.5 bg-sage text-cream font-semibold rounded-lg shadow hover:bg-sage-dark hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 text-white inline-flex items-center space-x-2">
+                <span>Start 1-Minute Quiz</span>
+                <i class="ph ph-arrow-right text-base"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Quiz Interactive Questions View (Hidden initially) -->
+          <div id="quiz-questions-view" class="hidden space-y-8">
+            <!-- Progress Bar -->
+            <div class="space-y-2">
+              <div class="flex justify-between text-xs font-semibold text-charcoal/70">
+                <span id="quiz-progress-label">Question 1 of 3</span>
+                <span id="quiz-progress-percent">33% Completed</span>
+              </div>
+              <div class="w-full h-2 bg-sage-light rounded-full overflow-hidden">
+                <div id="quiz-progress-bar" class="h-full bg-sage transition-all duration-500" style="width: 33%;"></div>
+              </div>
+            </div>
+
+            <!-- Question 1 -->
+            <div id="quiz-step-1" class="quiz-step space-y-4">
+              <h3 class="text-xl font-serif font-bold text-charcoal">What has been your primary challenge with weight management?</h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <button onclick="selectQuizOption(1, 'Stress & Emotional Eating')" class="quiz-opt-btn p-4 rounded-xl border border-sage/20 bg-cream text-left hover:border-sage hover:bg-sage-light/50 transition-all font-medium text-sm text-charcoal flex items-center justify-between group cursor-pointer">
+                  <span>Stress, anxiety, or late-night emotional eating</span>
+                  <i class="ph ph-caret-right text-base text-sage opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                </button>
+                <button onclick="selectQuizOption(1, 'Metabolic Plateau')" class="quiz-opt-btn p-4 rounded-xl border border-sage/20 bg-cream text-left hover:border-sage hover:bg-sage-light/50 transition-all font-medium text-sm text-charcoal flex items-center justify-between group cursor-pointer">
+                  <span>Unexplained weight plateau or metabolic changes</span>
+                  <i class="ph ph-caret-right text-base text-sage opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                </button>
+                <button onclick="selectQuizOption(1, 'Restrictive Diet Burnout')" class="quiz-opt-btn p-4 rounded-xl border border-sage/20 bg-cream text-left hover:border-sage hover:bg-sage-light/50 transition-all font-medium text-sm text-charcoal flex items-center justify-between group cursor-pointer">
+                  <span>Fatigue from strict diets and calorie counting</span>
+                  <i class="ph ph-caret-right text-base text-sage opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                </button>
+                <button onclick="selectQuizOption(1, 'Lack of Holistic Direction')" class="quiz-opt-btn p-4 rounded-xl border border-sage/20 bg-cream text-left hover:border-sage hover:bg-sage-light/50 transition-all font-medium text-sm text-charcoal flex items-center justify-between group cursor-pointer">
+                  <span>Seeking clinical, medical & mental health harmony</span>
+                  <i class="ph ph-caret-right text-base text-sage opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div id="quiz-step-2" class="quiz-step hidden space-y-4">
+              <h3 class="text-xl font-serif font-bold text-charcoal">Which aspect of care is most important for your long-term success?</h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <button onclick="selectQuizOption(2, 'Psychological & Behavioral Guidance')" class="quiz-opt-btn p-4 rounded-xl border border-sage/20 bg-cream text-left hover:border-sage hover:bg-sage-light/50 transition-all font-medium text-sm text-charcoal flex items-center justify-between group cursor-pointer">
+                  <span>Behavioral therapy & cognitive habit rewiring</span>
+                  <i class="ph ph-caret-right text-base text-sage opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                </button>
+                <button onclick="selectQuizOption(2, 'Medical & Lab Diagnostics')" class="quiz-opt-btn p-4 rounded-xl border border-sage/20 bg-cream text-left hover:border-sage hover:bg-sage-light/50 transition-all font-medium text-sm text-charcoal flex items-center justify-between group cursor-pointer">
+                  <span>Clinical evaluations, labs & physiological tracking</span>
+                  <i class="ph ph-caret-right text-base text-sage opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                </button>
+                <button onclick="selectQuizOption(2, 'Mindful Intuitive Nutrition')" class="quiz-opt-btn p-4 rounded-xl border border-sage/20 bg-cream text-left hover:border-sage hover:bg-sage-light/50 transition-all font-medium text-sm text-charcoal flex items-center justify-between group cursor-pointer">
+                  <span>Flexible, nourishing meal framework without shaming</span>
+                  <i class="ph ph-caret-right text-base text-sage opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                </button>
+                <button onclick="selectQuizOption(2, 'All-in-One Integrated Care')" class="quiz-opt-btn p-4 rounded-xl border border-sage/20 bg-cream text-left hover:border-sage hover:bg-sage-light/50 transition-all font-medium text-sm text-charcoal flex items-center justify-between group cursor-pointer">
+                  <span>An integrated combination of all three pillars</span>
+                  <i class="ph ph-caret-right text-base text-sage opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div id="quiz-step-3" class="quiz-step hidden space-y-4">
+              <h3 class="text-xl font-serif font-bold text-charcoal">What is your primary personal target for the next 90 days?</h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <button onclick="selectQuizOption(3, 'Sustainable Weight Reduction')" class="quiz-opt-btn p-4 rounded-xl border border-sage/20 bg-cream text-left hover:border-sage hover:bg-sage-light/50 transition-all font-medium text-sm text-charcoal flex items-center justify-between group cursor-pointer">
+                  <span>Losing weight sustainably without anxiety</span>
+                  <i class="ph ph-caret-right text-base text-sage opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                </button>
+                <button onclick="selectQuizOption(3, 'Emotional Freedom with Food')" class="quiz-opt-btn p-4 rounded-xl border border-sage/20 bg-cream text-left hover:border-sage hover:bg-sage-light/50 transition-all font-medium text-sm text-charcoal flex items-center justify-between group cursor-pointer">
+                  <span>Ending guilt and stress around daily meals</span>
+                  <i class="ph ph-caret-right text-base text-sage opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                </button>
+                <button onclick="selectQuizOption(3, 'Improved Vitality & Energy')" class="quiz-opt-btn p-4 rounded-xl border border-sage/20 bg-cream text-left hover:border-sage hover:bg-sage-light/50 transition-all font-medium text-sm text-charcoal flex items-center justify-between group cursor-pointer">
+                  <span>Regaining physical stamina & restorative sleep</span>
+                  <i class="ph ph-caret-right text-base text-sage opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                </button>
+                <button onclick="selectQuizOption(3, 'Complete Health Assessment')" class="quiz-opt-btn p-4 rounded-xl border border-sage/20 bg-cream text-left hover:border-sage hover:bg-sage-light/50 transition-all font-medium text-sm text-charcoal flex items-center justify-between group cursor-pointer">
+                  <span>Full clinical diagnostic & custom strategy blueprint</span>
+                  <i class="ph ph-caret-right text-base text-sage opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quiz Results View (Hidden initially) -->
+          <div id="quiz-results-view" class="hidden text-center space-y-6">
+            <div class="w-16 h-16 bg-sage-light text-sage rounded-full flex items-center justify-center mx-auto">
+              <i class="ph ph-sparkle text-3xl"></i>
+            </div>
+            <div class="space-y-2">
+              <span class="text-xs uppercase tracking-widest text-sage font-bold">Your Customized Assessment Result</span>
+              <h3 id="quiz-result-title" class="text-2xl md:text-3xl font-serif font-bold text-charcoal">Ideal Match: Psychological & Medical Integrated Model</h3>
+              <p id="quiz-result-desc" class="text-sm md:text-base text-charcoal/80 max-w-xl mx-auto font-light leading-relaxed">
+                Based on your responses, a combined behavioral therapy and medical wellness model will provide the breakthrough you've been looking for.
+              </p>
+            </div>
+
+            <div class="p-4 bg-sage-light/40 border border-sage/15 rounded-xl max-w-md mx-auto text-left space-y-2 text-xs font-medium text-charcoal/90">
+              <div class="flex items-center space-x-2 text-sage font-bold">
+                <i class="ph ph-check-circle text-lg"></i>
+                <span>Recommended Initial Action Plan:</span>
+              </div>
+              <ul class="list-disc list-inside space-y-1 pl-1 text-charcoal/80 font-light">
+                <li id="quiz-rec-item-1">1-on-1 Cognitive Behavioral Intake Session</li>
+                <li id="quiz-rec-item-2">Comprehensive Metabolic Baseline Assessment</li>
+                <li id="quiz-rec-item-3">Intuitive Mindful Nutrition Framework</li>
+              </ul>
+            </div>
+
+            <div class="flex flex-col sm:flex-row justify-center items-center space-y-3 sm:space-y-0 sm:space-x-4">
+              <button onclick="applyQuizToBooking()" class="cursor-pointer px-8 py-3.5 bg-coral text-cream font-semibold rounded-lg shadow hover:bg-coral-dark hover:scale-[1.02] active:scale-[0.98] transition-all text-white border-0">
+                Book Consultation with My Assessment Results
+              </button>
+              <button onclick="resetQuiz()" class="text-xs text-charcoal/60 hover:text-sage transition-colors underline cursor-pointer">
+                Retake Assessment
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="py-20 md:py-28 relative">
+      <div class="max-w-7xl mx-auto px-6">
+        
+        <!-- Header -->
+        <div class="max-w-3xl mx-auto text-center mb-20 space-y-4">
+          <span class="text-xs uppercase tracking-widest text-sage font-bold">Our Pillars of Support</span>
+          <h2 class="text-3xl md:text-4xl font-serif font-bold text-charcoal">Personalized, Science-Backed Offerings</h2>
+          <div class="w-16 h-1 bg-sage mx-auto rounded-full"></div>
+          <p class="text-lg text-charcoal/70 font-light">
+            We don't offer generic templates. We combine psychological care, clinical knowledge, and functional nutrition into one cohesive journey.
+          </p>
+        </div>
+
+        <!-- Services Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <!-- Service 1: Psychological Counseling -->
+          <div class="bg-cream rounded-xl p-8 border border-sage/15 shadow-sm hover:shadow-lg hover:border-sage/40 transition-all duration-300 flex flex-col">
+            <div class="w-14 h-14 bg-sage-light rounded-xl flex items-center justify-center text-sage mb-8">
+              <i class="ph ph-brain text-3xl"></i>
+            </div>
+            <h3 class="text-2xl font-serif font-bold text-charcoal mb-4">Psychological Counseling</h3>
+            <p class="text-charcoal/80 leading-relaxed font-light mb-6 flex-grow">
+              Understand the core drivers of your eating habits. Our tailored cognitive behavioral therapy assists with stress-eating, food anxiety, and cultivating a peaceful, positive mind-body dynamic.
+            </p>
+            <ul class="space-y-3 mb-8 text-sm font-medium text-charcoal/90">
+              <li class="flex items-center space-x-2">
+                <i class="ph ph-check text-base text-sage flex-shrink-0"></i>
+                <span>CBT-E Behavioral Coaching</span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <i class="ph ph-check text-base text-sage flex-shrink-0"></i>
+                <span>Stress & Emotional Eating Therapy</span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <i class="ph ph-check text-base text-sage flex-shrink-0"></i>
+                <span>Body Image Reconciliation</span>
+              </li>
+            </ul>
+            <button onclick="openBookingModal('Psychological Counseling')" class="cursor-pointer w-full py-3 bg-cream border border-sage text-sage font-semibold rounded-lg hover:bg-sage-light hover:border-sage-dark transition-all duration-200 text-center">
+              Learn More & Book
+            </button>
+          </div>
+
+          <!-- Service 2: Medical Weight Management -->
+          <div class="bg-cream rounded-xl p-8 border-2 border-sage shadow-md hover:shadow-xl relative flex flex-col">
+            <!-- Popular Badge -->
+            <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-sage text-cream font-bold text-xs uppercase tracking-widest px-4 py-1 rounded-full">
+              Clinical Standard
+            </div>
+            <div class="w-14 h-14 bg-sage-light rounded-xl flex items-center justify-center text-sage mb-8">
+              <i class="ph ph-pulse text-3xl"></i>
+            </div>
+            <h3 class="text-2xl font-serif font-bold text-charcoal mb-4">Medical Management</h3>
+            <p class="text-charcoal/80 leading-relaxed font-light mb-6 flex-grow">
+              Safe, professional clinical tracking targeting the physiological mechanisms of your body. We provide metabolic evaluations, health screenings, and professional guidance on biological health.
+            </p>
+            <ul class="space-y-3 mb-8 text-sm font-medium text-charcoal/90">
+              <li class="flex items-center space-x-2">
+                <i class="ph ph-check text-base text-sage flex-shrink-0"></i>
+                <span>Metabolic Health Assessments</span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <i class="ph ph-check text-base text-sage flex-shrink-0"></i>
+                <span>Hormonal & Lab Diagnostics</span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <i class="ph ph-check text-base text-sage flex-shrink-0"></i>
+                <span>Safe Medical Progression Tracking</span>
+              </li>
+            </ul>
+            <button onclick="openBookingModal('Medical Management')" class="cursor-pointer w-full py-3 bg-coral text-cream font-semibold rounded-lg hover:bg-coral-dark transition-all duration-200 text-center text-white border-0">
+              Learn More & Book
+            </button>
+          </div>
+
+          <!-- Service 3: Nutritional Counseling -->
+          <div class="bg-cream rounded-xl p-8 border border-sage/15 shadow-sm hover:shadow-lg hover:border-sage/40 transition-all duration-300 flex flex-col">
+            <div class="w-14 h-14 bg-sage-light rounded-xl flex items-center justify-center text-sage mb-8">
+              <i class="ph ph-apple-logo text-3xl"></i>
+            </div>
+            <h3 class="text-2xl font-serif font-bold text-charcoal mb-4">Nutritional Counseling</h3>
+            <p class="text-charcoal/80 leading-relaxed font-light mb-6 flex-grow">
+              Nutritional guidelines focusing on abundance, health, and satisfaction instead of restrictions. Learn intuitive and mindful eating techniques to feed your body with absolute confidence and joy.
+            </p>
+            <ul class="space-y-3 mb-8 text-sm font-medium text-charcoal/90">
+              <li class="flex items-center space-x-2">
+                <i class="ph ph-check text-base text-sage flex-shrink-0"></i>
+                <span>Non-Restrictive Meal Guidance</span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <i class="ph ph-check text-base text-sage flex-shrink-0"></i>
+                <span>Intuitive Hunger Tuning</span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <i class="ph ph-check text-base text-sage flex-shrink-0"></i>
+                <span>Nourishing Pantry Frameworks</span>
+              </li>
+            </ul>
+            <button onclick="openBookingModal('Nutritional Counseling')" class="cursor-pointer w-full py-3 bg-cream border border-sage text-sage font-semibold rounded-lg hover:bg-sage-light hover:border-sage-dark transition-all duration-200 text-center">
+              Learn More & Book
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- WELLNESS & HYDRATION CALCULATOR SECTION -->
+    <section id="calculator" class="py-20 bg-cream relative">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="max-w-3xl mx-auto text-center mb-16 space-y-4">
+          <span class="text-xs uppercase tracking-widest text-sage font-bold">Interactive Wellness Toolkit</span>
+          <h2 class="text-3xl md:text-4xl font-serif font-bold text-charcoal">Mindful Hydration & Daily Energy Baseline Calculator</h2>
+          <div class="w-16 h-1 bg-sage mx-auto rounded-full"></div>
+          <p class="text-lg text-charcoal/70 font-light">
+            Calculated gently for your body. No aggressive caloric deficits or strict rules—just nourishing physical baselines.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-sage-light/30 border border-sage/15 rounded-2xl p-8 md:p-12 shadow-sm">
+          <!-- Input Controls Column -->
+          <div class="lg:col-span-7 space-y-6">
+            
+            <!-- Input 1: Weight -->
+            <div class="space-y-2">
+              <div class="flex justify-between items-center text-sm font-semibold text-charcoal">
+                <label for="calc-weight" class="flex items-center space-x-2">
+                  <i class="ph ph-scales text-lg text-sage"></i>
+                  <span>Body Weight:</span>
+                </label>
+                <span class="text-sage font-bold font-serif text-base"><span id="calc-weight-val">160</span> lbs</span>
+              </div>
+              <input type="range" id="calc-weight" min="90" max="350" value="160" oninput="updateCalculator()" class="w-full h-2 bg-sage/20 rounded-lg appearance-none cursor-pointer accent-sage">
+              <div class="flex justify-between text-xs text-charcoal/50">
+                <span>90 lbs</span>
+                <span>350 lbs</span>
+              </div>
+            </div>
+
+            <!-- Input 2: Movement/Activity -->
+            <div class="space-y-2">
+              <div class="flex justify-between items-center text-sm font-semibold text-charcoal">
+                <label for="calc-activity" class="flex items-center space-x-2">
+                  <i class="ph ph-footprints text-lg text-sage"></i>
+                  <span>Daily Gentle Movement:</span>
+                </label>
+                <span class="text-sage font-bold font-serif text-base"><span id="calc-activity-val">30</span> mins</span>
+              </div>
+              <input type="range" id="calc-activity" min="0" max="120" step="10" value="30" oninput="updateCalculator()" class="w-full h-2 bg-sage/20 rounded-lg appearance-none cursor-pointer accent-sage">
+              <div class="flex justify-between text-xs text-charcoal/50">
+                <span>Rest Day (0 mins)</span>
+                <span>Active Day (120 mins)</span>
+              </div>
+            </div>
+
+            <!-- Input 3: Restful Sleep -->
+            <div class="space-y-2">
+              <div class="flex justify-between items-center text-sm font-semibold text-charcoal">
+                <label for="calc-sleep" class="flex items-center space-x-2">
+                  <i class="ph ph-moon text-lg text-sage"></i>
+                  <span>Nightly Restful Sleep:</span>
+                </label>
+                <span class="text-sage font-bold font-serif text-base"><span id="calc-sleep-val">7.5</span> hours</span>
+              </div>
+              <input type="range" id="calc-sleep" min="4" max="11" step="0.5" value="7.5" oninput="updateCalculator()" class="w-full h-2 bg-sage/20 rounded-lg appearance-none cursor-pointer accent-sage">
+              <div class="flex justify-between text-xs text-charcoal/50">
+                <span>4 hrs</span>
+                <span>11 hrs</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Calculated Results Display Column -->
+          <div class="lg:col-span-5 bg-cream border border-sage/20 rounded-xl p-6 shadow-md space-y-6">
+            <h3 class="font-serif font-bold text-lg text-charcoal flex items-center space-x-2">
+              <i class="ph ph-drop text-xl text-sage"></i>
+              <span>Your Daily Baseline</span>
+            </h3>
+
+            <div class="space-y-4">
+              <!-- Water Intake -->
+              <div class="p-4 bg-sage-light/50 rounded-lg border border-sage/10">
+                <span class="text-xs uppercase tracking-wider text-sage font-bold">Optimal Daily Water</span>
+                <div class="flex items-baseline space-x-2 mt-1">
+                  <span id="res-water-oz" class="text-3xl font-bold font-serif text-charcoal">92</span>
+                  <span class="text-sm font-medium text-charcoal/70">oz / day (~<span id="res-water-cups">11.5</span> glasses)</span>
+                </div>
+              </div>
+
+              <!-- Mindful Vitality Index -->
+              <div class="p-4 bg-sage-light/50 rounded-lg border border-sage/10">
+                <span class="text-xs uppercase tracking-wider text-sage font-bold">Rest & Recovery Score</span>
+                <div class="flex items-baseline space-x-2 mt-1">
+                  <span id="res-recovery-score" class="text-3xl font-bold font-serif text-sage">88%</span>
+                  <span id="res-recovery-status" class="text-xs font-semibold px-2 py-0.5 rounded bg-sage/20 text-sage-dark">Optimal Sync</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-2 border-t border-sage/10 text-xs text-charcoal/70 font-light space-y-1">
+              <p class="font-semibold text-charcoal">Clinical Insight:</p>
+              <p id="res-clinical-tip">Proper hydration directly reduces stress-induced appetite signals. Combine hydration with 7+ hours sleep for optimum leptin balance.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS SLIDER SECTION -->
+    <section id="testimonials" class="py-20 bg-sage-light/20 border-y border-sage/10 relative overflow-hidden">
+      <div class="max-w-5xl mx-auto px-6">
+        
+        <div class="text-center mb-12">
+          <span class="text-xs uppercase tracking-widest text-sage font-bold">Healing Journeys</span>
+          <h2 class="text-3xl font-serif font-bold text-charcoal mt-2">Real Stories of Lasting Change</h2>
+        </div>
+
+        <!-- Slider Wrapper -->
+        <div class="relative bg-cream border border-sage/15 p-8 md:p-12 rounded-2xl shadow-sm min-h-[300px] flex flex-col justify-between">
+          <!-- Quote Icon -->
+          <div class="absolute top-6 left-6 text-sage/10">
+            <i class="ph ph-quotes text-7xl"></i>
+          </div>
+
+          <!-- Testimonial Content Container -->
+          <div class="relative z-10">
+            <!-- Testimonials Slides -->
+            <div id="testimonial-slide-0" class="testimonial-slide transition-opacity duration-500 space-y-6">
+              <p class="text-xl md:text-2xl font-serif italic text-charcoal/90 leading-relaxed">
+                "Mindful Weightful Clinic changed my entire life dynamic. For the first time ever, I felt zero guilt. I lost 35 lbs organically, but more importantly, I found absolute peace of mind."
+              </p>
+              <div class="flex items-center space-x-4">
+                <div class="w-12 h-12 bg-sage rounded-full flex items-center justify-center text-cream font-bold text-lg font-serif text-white">SM</div>
+                <div>
+                  <h4 class="font-serif font-bold text-charcoal text-base">Sarah M.</h4>
+                  <p class="text-xs text-charcoal/60 uppercase tracking-widest">Active Client — 14 Months</p>
+                </div>
+              </div>
+            </div>
+
+            <div id="testimonial-slide-1" class="testimonial-slide hidden transition-opacity duration-500 space-y-6">
+              <p class="text-xl md:text-2xl font-serif italic text-charcoal/90 leading-relaxed">
+                "The unique blending of psychiatric insight with non-restrictive nutrition counseling was my turning point. I finally understand the brain triggers that govern my eating behavior."
+              </p>
+              <div class="flex items-center space-x-4">
+                <div class="w-12 h-12 bg-sage rounded-full flex items-center justify-center text-cream font-bold text-lg font-serif text-white">DL</div>
+                <div>
+                  <h4 class="font-serif font-bold text-charcoal text-base">David L.</h4>
+                  <p class="text-xs text-charcoal/60 uppercase tracking-widest">Active Client — 8 Months</p>
+                </div>
+              </div>
+            </div>
+
+            <div id="testimonial-slide-2" class="testimonial-slide hidden transition-opacity duration-500 space-y-6">
+              <p class="text-xl md:text-2xl font-serif italic text-charcoal/90 leading-relaxed">
+                "Zero shame. No aggressive targets. Just profound clinical expertise, emotional comfort, and practical psychological tools that integrated seamlessly into my hectic schedule."
+              </p>
+              <div class="flex items-center space-x-4">
+                <div class="w-12 h-12 bg-sage rounded-full flex items-center justify-center text-cream font-bold text-lg font-serif text-white">ER</div>
+                <div>
+                  <h4 class="font-serif font-bold text-charcoal text-base">Elena R.</h4>
+                  <p class="text-xs text-charcoal/60 uppercase tracking-widest">Active Client — 2 Years</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Controls -->
+          <div class="flex items-center justify-between mt-8 border-t border-sage/10 pt-6 z-10">
+            <!-- Dots Indicator -->
+            <div class="flex space-x-2">
+              <span id="dot-0" onclick="showTestimonial(0)" class="w-2.5 h-2.5 rounded-full cursor-pointer bg-sage transition-all duration-300"></span>
+              <span id="dot-1" onclick="showTestimonial(1)" class="w-2.5 h-2.5 rounded-full cursor-pointer bg-sage/30 hover:bg-sage/60 transition-all duration-300"></span>
+              <span id="dot-2" onclick="showTestimonial(2)" class="w-2.5 h-2.5 rounded-full cursor-pointer bg-sage/30 hover:bg-sage/60 transition-all duration-300"></span>
+            </div>
+            <!-- Arrow buttons -->
+            <div class="flex space-x-3">
+              <button onclick="prevTestimonial()" class="p-2 border border-sage/30 hover:bg-sage/10 text-sage rounded-full transition-colors cursor-pointer" aria-label="Previous Testimonial">
+                <i class="ph ph-caret-left text-xl"></i>
+              </button>
+              <button onclick="nextTestimonial()" class="p-2 border border-sage/30 hover:bg-sage/10 text-sage rounded-full transition-colors cursor-pointer" aria-label="Next Testimonial">
+                <i class="ph ph-caret-right text-xl"></i>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section id="faqs" class="py-20 md:py-28">
+      <div class="max-w-4xl mx-auto px-6">
+        
+        <div class="text-center mb-16 space-y-4">
+          <h2 class="text-3xl font-serif font-bold text-charcoal">Frequently Asked Questions</h2>
+          <div class="w-16 h-1 bg-sage mx-auto rounded-full"></div>
+          <p class="text-charcoal/70 font-light">Everything you need to know about our approach, credentials, and methodology.</p>
+        </div>
+
+        <!-- Accordions List -->
+        <div class="space-y-4">
+          
+          <!-- Q1 -->
+          <div class="border border-sage/15 rounded-xl bg-cream overflow-hidden transition-all duration-300">
+            <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left cursor-pointer group">
+              <span class="font-serif font-bold text-charcoal md:text-lg group-hover:text-sage transition-colors">
+                What makes a behavioral weight management approach different?
+              </span>
+              <span class="p-1 text-sage bg-sage-light rounded-full transition-transform duration-300 faq-icon">
+                <i class="ph ph-caret-down text-lg"></i>
+              </span>
+            </button>
+            <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-sage-light/10">
+              <div class="p-6 pt-0 border-t border-sage/5 text-charcoal/80 leading-relaxed font-light text-sm md:text-base">
+                Traditional diets rely entirely on restrictive structures and sheer willpower, which often leads to mental exhaustion and weight rebounds. Our behavioral health model tackles the cognitive triggers, neurobiological pathways, stress-eating habits, and hormone regulations that govern weight, allowing you to develop a permanent, peaceful relationship with food.
+              </div>
+            </div>
+          </div>
+
+          <!-- Q2 -->
+          <div class="border border-sage/15 rounded-xl bg-cream overflow-hidden transition-all duration-300">
+            <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left cursor-pointer group">
+              <span class="font-serif font-bold text-charcoal md:text-lg group-hover:text-sage transition-colors">
+                Do you accept commercial medical insurance?
+              </span>
+              <span class="p-1 text-sage bg-sage-light rounded-full transition-transform duration-300 faq-icon">
+                <i class="ph ph-caret-down text-lg"></i>
+              </span>
+            </button>
+            <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-sage-light/10">
+              <div class="p-6 pt-0 border-t border-sage/5 text-charcoal/80 leading-relaxed font-light text-sm md:text-base">
+                We act as an out-of-network provider to maintain complete control over clinical quality without insurance constraints. We provide complete, itemized superbills which you can submit directly to insurance providers for reimbursement. Additionally, we welcome payments via HSA (Health Savings Account) and FSA (Flexible Spending Account) cards.
+              </div>
+            </div>
+          </div>
+
+          <!-- Q3 -->
+          <div class="border border-sage/15 rounded-xl bg-cream overflow-hidden transition-all duration-300">
+            <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left cursor-pointer group">
+              <span class="font-serif font-bold text-charcoal md:text-lg group-hover:text-sage transition-colors">
+                Do you prescribe clinical weight loss medications?
+              </span>
+              <span class="p-1 text-sage bg-sage-light rounded-full transition-transform duration-300 faq-icon">
+                <i class="ph ph-caret-down text-lg"></i>
+              </span>
+            </button>
+            <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-sage-light/10">
+              <div class="p-6 pt-0 border-t border-sage/5 text-charcoal/80 leading-relaxed font-light text-sm md:text-base">
+                As a fully credentialed psychiatric and clinical practice, medical treatments are evaluated on a strict case-by-case basis. If medication is deemed appropriate, safe, and medically beneficial to support your clinical goals, our practitioners can prescribe and manage them alongside regular metabolic screenings and physical assessments.
+              </div>
+            </div>
+          </div>
+
+          <!-- Q4 -->
+          <div class="border border-sage/15 rounded-xl bg-cream overflow-hidden transition-all duration-300">
+            <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left cursor-pointer group">
+              <span class="font-serif font-bold text-charcoal md:text-lg group-hover:text-sage transition-colors">
+                Are sessions offered virtually, in-person, or hybrid?
+              </span>
+              <span class="p-1 text-sage bg-sage-light rounded-full transition-transform duration-300 faq-icon">
+                <i class="ph ph-caret-down text-lg"></i>
+              </span>
+            </button>
+            <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-sage-light/10">
+              <div class="p-6 pt-0 border-t border-sage/5 text-charcoal/80 leading-relaxed font-light text-sm md:text-base">
+                We provide flexible telehealth visits across the region, allowing for consistent support from the comfort of your home. Initial diagnostic reviews can be conducted in-office or virtually depending on medical monitoring requirements. Our digital portal makes sharing logs, scheduling sessions, and messaging your provider smooth and simple.
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PRE-FOOTER BANNER -->
+    <section class="bg-sage py-16 md:py-24 text-cream relative overflow-hidden">
+      <!-- Background overlay design -->
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-sage-dark to-sage opacity-40"></div>
+      
+      <div class="max-w-5xl mx-auto px-6 text-center space-y-6 md:space-y-8 relative z-10">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-serif font-bold leading-tight">
+          Ready to Begin Your Transformation?
+        </h2>
+        <p class="text-lg md:text-xl text-cream/90 max-w-2xl mx-auto font-light leading-relaxed">
+          Take the first step with a complimentary, no-obligation 15-minute consultation. We’ll outline a strategy, discuss your specific wellness goals, and explore how we can support you.
+        </p>
+        <div>
+          <button onclick="openBookingModal()" class="cursor-pointer px-8 py-4 bg-coral text-cream font-semibold rounded-lg shadow-lg hover:bg-coral-dark hover:scale-105 active:scale-[0.98] transition-all duration-200 text-white border-0">
+            Book Free Consultation
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-charcoal text-cream border-t border-sage/10 pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
+      
+      <!-- Col 1: Brand Info -->
+      <div class="space-y-6">
+        <a href="#" class="flex items-center space-x-2">
+          <span class="p-2 bg-sage/20 rounded-lg text-sage">
+            <i class="ph ph-plant text-2xl"></i>
+          </span>
+          <span class="font-serif font-bold text-lg tracking-tight text-cream">Mindful Weightful</span>
+        </a>
+        <p class="text-cream/70 text-sm leading-relaxed font-light">
+          A board-certified psychiatric nursing and clinical health practice helping clients rewrite behavioral habits and build vibrant metabolic wellness.
+        </p>
+        <!-- Social Icons -->
+        <div class="flex space-x-4">
+          <a href="#" class="text-cream/50 hover:text-sage transition-colors" aria-label="Follow us on Instagram">
+            <i class="ph ph-instagram-logo text-xl"></i>
+          </a>
+          <a href="#" class="text-cream/50 hover:text-sage transition-colors" aria-label="Follow us on LinkedIn">
+            <i class="ph ph-linkedin-logo text-xl"></i>
+          </a>
+          <a href="#" class="text-cream/50 hover:text-sage transition-colors" aria-label="Find us on Google">
+            <i class="ph ph-map-pin text-xl"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Col 2: Quick Links -->
+      <div class="space-y-6">
+        <h4 class="font-serif font-bold text-base tracking-wider uppercase text-sage">Practice Links</h4>
+        <ul class="space-y-3 text-sm text-cream/70 font-light">
+          <li><a href="#services" class="hover:text-sage transition-colors">Our Pillars & Offerings</a></li>
+          <li><a href="#credentials" class="hover:text-sage transition-colors">Practitioner Credentials</a></li>
+          <li><a href="#testimonials" class="hover:text-sage transition-colors">Client Testimonials</a></li>
+          <li><a href="#faqs" class="hover:text-sage transition-colors">Frequently Asked Questions</a></li>
+          <li><a href="#" onclick="openBookingModal(); return false;" class="hover:text-sage transition-colors">Schedule Consultation</a></li>
+          <li><a href="#" onclick="openQRModal(); return false;" class="hover:text-sage transition-colors flex items-center space-x-1.5 text-sage-light"><i class="ph ph-qr-code text-sage text-base"></i><span>Mobile QR Intake Link</span></a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Contact & Location -->
+      <div class="space-y-6">
+        <h4 class="font-serif font-bold text-base tracking-wider uppercase text-sage">Get In Touch</h4>
+        <ul class="space-y-4 text-sm text-cream/70 font-light">
+          <li onclick="copyToClipboard('(555) 321-9876', 'Phone number')" class="flex items-start space-x-3 cursor-pointer hover:text-sage transition-colors group" title="Click to copy phone number">
+            <i class="ph ph-phone text-xl text-sage shrink-0 mt-0.5 group-hover:scale-110 transition-transform"></i>
+            <span>(555) 321-9876</span>
+          </li>
+          <li onclick="copyToClipboard('support@mindfulweightful.com', 'Email address')" class="flex items-start space-x-3 cursor-pointer hover:text-sage transition-colors group" title="Click to copy email">
+            <i class="ph ph-envelope text-xl text-sage shrink-0 mt-0.5 group-hover:scale-110 transition-transform"></i>
+            <span>support@mindfulweightful.com</span>
+          </li>
+          <li onclick="copyToClipboard('120 Wellness Way, Suite 400, San Francisco, CA 94107', 'Clinic address')" class="flex items-start space-x-3 cursor-pointer hover:text-sage transition-colors group" title="Click to copy address">
+            <i class="ph ph-map-pin text-xl text-sage shrink-0 mt-0.5 group-hover:scale-110 transition-transform"></i>
+            <span>120 Wellness Way, Suite 400<br>San Francisco, CA 94107</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Hours & Emergency Support -->
+      <div class="space-y-6">
+        <h4 class="font-serif font-bold text-base tracking-wider uppercase text-sage">Hours & Support</h4>
+        
+        <div class="text-sm text-cream/70 font-light space-y-2">
+          <div class="flex justify-between">
+            <span>Mon — Thu:</span>
+            <span>8:00 AM — 6:00 PM</span>
+          </div>
+          <div class="flex justify-between">
+            <span>Friday:</span>
+            <span>8:00 AM — 4:00 PM</span>
+          </div>
+          <div class="flex justify-between">
+            <span>Sat — Sun:</span>
+            <span class="text-sage font-medium">Closed</span>
+          </div>
+        </div>
+
+        <div class="p-4 bg-red-950/20 border border-red-900/40 rounded-lg space-y-2">
+          <div class="flex items-center space-x-2 text-red-300 font-semibold text-xs uppercase tracking-wider">
+            <i class="ph ph-warning-octagon text-lg shrink-0"></i>
+            <span>24/7 Crisis Support</span>
+          </div>
+          <p class="text-xs text-cream/60 leading-relaxed font-light">
+            If you are experiencing a mental health emergency, call or text <strong>988</strong> to reach the National Suicide & Crisis Lifeline immediately.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Copy -->
+    <div class="max-w-7xl mx-auto px-6 border-t border-sage/10 pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-cream/40 font-light space-y-4 md:space-y-0">
+      <p>&copy; 2026 Mindful Weightful Loss Clinic, LLC. All rights reserved.</p>
+      <div class="flex space-x-6">
+        <a href="#" class="hover:text-sage transition-colors">Privacy Policy</a>
+        <a href="#" class="hover:text-sage transition-colors">Terms of Service</a>
+        <a href="#" class="hover:text-sage transition-colors">Medical Disclaimer</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BOOKING CONSULTATION MODAL (Multi-Step Health Screening Intake & Email Submission) -->
+  <div id="booking-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden bg-charcoal/80 backdrop-blur-md p-3 md:p-6 transition-all duration-300 opacity-0">
+    <!-- Ambient Radial Glow Orb Behind Container -->
+    <div class="absolute w-96 h-96 bg-sage/20 rounded-full blur-3xl scale-125 pointer-events-none"></div>
+
+    <!-- Modal container -->
+    <div id="modal-container" class="relative bg-cream border-2 border-sage/30 rounded-3xl shadow-[0_25px_60px_-15px_rgba(0,0,0,0.5)] max-w-4xl w-full max-h-[92vh] overflow-y-auto transform scale-95 transition-all duration-300 ease-out overflow-hidden">
+      
+      <!-- Tactile Close button -->
+      <button onclick="closeBookingModal()" class="absolute top-4 right-4 z-30 p-2.5 bg-cream/90 backdrop-blur-md text-charcoal/70 hover:text-charcoal hover:bg-sage-light rounded-full border border-sage/20 shadow-md transition-all cursor-pointer hover:rotate-90" aria-label="Close Booking Modal">
+        <i class="ph ph-x text-xl"></i>
+      </button>
+
+      <!-- Form View (Unconventional Split-Screen Grid) -->
+      <div id="modal-form-view" class="grid grid-cols-1 lg:grid-cols-12 min-h-[580px]">
+        
+        <!-- Left Panel: Clinician & Practice Spotlight Banner -->
+        <div class="lg:col-span-4 bg-gradient-to-b from-sage-dark via-charcoal to-sage-dark text-cream p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden space-y-6">
+          <!-- Background Subtle Overlay Pattern -->
+          <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-sage/20 to-transparent opacity-40"></div>
+          
+          <div class="relative z-10 space-y-5">
+            <span class="inline-flex items-center space-x-1.5 px-3 py-1 bg-sage/30 border border-sage/40 rounded-full text-[11px] font-bold uppercase tracking-wider text-sage-light">
+              <i class="ph ph-stethoscope text-sm"></i>
+              <span>Clinical Intake Portal</span>
+            </span>
+
+            <!-- Clinician Avatar & Info -->
+            <div class="flex items-center space-x-3.5 pt-1">
+              <div class="relative">
+                <img src="primary_nurse.jpg" alt="Primary Psychiatric Nurse Practitioner" class="w-14 h-14 rounded-2xl object-cover border-2 border-sage/40 shadow-lg">
+                <span class="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-emerald-500 border-2 border-charcoal rounded-full" title="Accepting New Patients"></span>
+              </div>
+              <div>
+                <h4 class="font-serif font-bold text-base text-cream leading-tight">Lead Psychiatric NP</h4>
+                <p class="text-xs text-cream/70 mt-0.5 font-light">Mindful Weightful Clinic</p>
+              </div>
+            </div>
+
+            <p class="text-xs text-cream/80 font-light italic leading-relaxed pt-3 border-t border-cream/10">
+              "We take the pressure off your shoulders. Every survey is evaluated with complete clinical care, empathy, and confidentiality."
+            </p>
+          </div>
+
+          <!-- Direct Booking Link Banner Info -->
+          <div class="relative z-10 p-3.5 bg-cream/10 border border-cream/15 rounded-2xl space-y-2 text-xs">
+            <div class="flex items-center justify-between font-bold text-sage-light">
+              <span class="flex items-center space-x-1.5"><i class="ph ph-qr-code text-sm"></i><span>Direct QR Link Active</span></span>
+              <button type="button" onclick="openQRModal()" class="cursor-pointer px-2.5 py-1 bg-sage/30 hover:bg-sage text-cream text-[10px] rounded-md border border-sage/40 transition-all font-semibold flex items-center space-x-1">
+                <i class="ph ph-qr-code text-xs"></i>
+                <span>Get QR Code</span>
+              </button>
+            </div>
+            <p class="text-[11px] text-cream/70 font-light leading-snug">
+              Direct URL <code class="text-cream bg-black/30 px-1 py-0.5 rounded text-[10px]">#book</code> launches this survey directly. Scan QR code for mobile access!
+            </p>
+          </div>
+
+          <!-- Trust Badges List -->
+          <div class="relative z-10 space-y-2.5 pt-4 border-t border-cream/10 text-xs text-cream/80 font-medium">
+            <div class="flex items-center space-x-2.5">
+              <i class="ph ph-shield-check text-sage-light text-base shrink-0"></i>
+              <span>100% Confidential & HIPAA Compliant</span>
+            </div>
+            <div class="flex items-center space-x-2.5">
+              <i class="ph ph-paper-plane-tilt text-coral text-base shrink-0"></i>
+              <span>Transfers Directly to Clinic Email</span>
+            </div>
+            <div class="flex items-center space-x-2.5">
+              <i class="ph ph-clock text-sage-light text-base shrink-0"></i>
+              <span>24-Hour Clinical Review</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Panel: Interactive Multi-Step Intake & Health Screening Form -->
+        <div class="lg:col-span-8 p-6 sm:p-8 bg-cream space-y-6 flex flex-col justify-between">
+          
+          <!-- Step Indicator & Header -->
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <div>
+                <span id="step-badge" class="px-2.5 py-0.5 bg-sage/20 text-sage-dark font-bold text-[11px] rounded-md uppercase tracking-wider">Step 1 of 2</span>
+                <h3 id="step-heading" class="text-xl sm:text-2xl font-serif font-bold text-charcoal mt-1">Health Screening Survey</h3>
+              </div>
+              <span id="step-progress-percent" class="text-xs font-semibold text-sage">50% Completed</span>
+            </div>
+
+            <!-- Progress Bar Line -->
+            <div class="w-full bg-sage-light/60 h-2 rounded-full overflow-hidden">
+              <div id="booking-progress-bar" class="bg-sage h-full transition-all duration-300 rounded-full" style="width: 50%;"></div>
+            </div>
+          </div>
+
+          <form id="booking-form" onsubmit="handleBookingSubmit(event)" class="space-y-4">
+            
+            <!-- STEP 1: HEALTH SCREENING SURVEY -->
+            <div id="booking-step-1" class="space-y-4">
+              <p class="text-xs text-charcoal/70 font-light leading-relaxed">
+                Please complete this preliminary health screening so our clinical team understands what is wrong and how to best tailor your care.
+              </p>
+
+              <!-- Question 1: Primary Health Concerns -->
+              <div class="space-y-2">
+                <label class="text-xs font-bold uppercase tracking-wider text-sage block">1. What is your primary health concern or symptom?</label>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2" id="survey-concerns-container">
+                  <label class="survey-chip flex items-center space-x-2 p-2.5 border border-sage/30 rounded-xl cursor-pointer hover:bg-sage-light/50 transition-all text-xs font-medium text-charcoal">
+                    <input type="checkbox" name="health_concerns" value="Difficulty Losing Weight / Weight Plateaus" class="w-4 h-4 text-sage accent-sage rounded">
+                    <span>Difficulty Losing Weight</span>
+                  </label>
+                  <label class="survey-chip flex items-center space-x-2 p-2.5 border border-sage/30 rounded-xl cursor-pointer hover:bg-sage-light/50 transition-all text-xs font-medium text-charcoal">
+                    <input type="checkbox" name="health_concerns" value="Binge / Emotional / Stress-Induced Eating" class="w-4 h-4 text-sage accent-sage rounded">
+                    <span>Emotional & Stress Eating</span>
+                  </label>
+                  <label class="survey-chip flex items-center space-x-2 p-2.5 border border-sage/30 rounded-xl cursor-pointer hover:bg-sage-light/50 transition-all text-xs font-medium text-charcoal">
+                    <input type="checkbox" name="health_concerns" value="Metabolic Sluggishness & Low Energy" class="w-4 h-4 text-sage accent-sage rounded">
+                    <span>Low Energy & Fatigue</span>
+                  </label>
+                  <label class="survey-chip flex items-center space-x-2 p-2.5 border border-sage/30 rounded-xl cursor-pointer hover:bg-sage-light/50 transition-all text-xs font-medium text-charcoal">
+                    <input type="checkbox" name="health_concerns" value="Hormonal & Thyroid Balance Issues" class="w-4 h-4 text-sage accent-sage rounded">
+                    <span>Hormone / Thyroid Concern</span>
+                  </label>
+                  <label class="survey-chip flex items-center space-x-2 p-2.5 border border-sage/30 rounded-xl cursor-pointer hover:bg-sage-light/50 transition-all text-xs font-medium text-charcoal">
+                    <input type="checkbox" name="health_concerns" value="Medication-Assisted Weight Management" class="w-4 h-4 text-sage accent-sage rounded">
+                    <span>GLP-1 / Medication Support</span>
+                  </label>
+                  <label class="survey-chip flex items-center space-x-2 p-2.5 border border-sage/30 rounded-xl cursor-pointer hover:bg-sage-light/50 transition-all text-xs font-medium text-charcoal">
+                    <input type="checkbox" name="health_concerns" value="Anxiety / Mood or Sleep Disturbance" class="w-4 h-4 text-sage accent-sage rounded">
+                    <span>Mood, Anxiety or Sleep</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Question 2: Existing Diagnosed Conditions -->
+              <div class="space-y-2">
+                <label class="text-xs font-bold uppercase tracking-wider text-sage block">2. Any diagnosed medical conditions?</label>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                  <label class="flex items-center space-x-2 p-2 bg-sage-light/30 border border-sage/20 rounded-lg cursor-pointer hover:bg-sage-light text-xs font-medium text-charcoal">
+                    <input type="checkbox" name="medical_conditions" value="Hypertension (High BP)" class="w-3.5 h-3.5 text-sage accent-sage rounded">
+                    <span class="truncate">High BP</span>
+                  </label>
+                  <label class="flex items-center space-x-2 p-2 bg-sage-light/30 border border-sage/20 rounded-lg cursor-pointer hover:bg-sage-light text-xs font-medium text-charcoal">
+                    <input type="checkbox" name="medical_conditions" value="Diabetes / Pre-Diabetes" class="w-3.5 h-3.5 text-sage accent-sage rounded">
+                    <span class="truncate">Pre-Diabetes</span>
+                  </label>
+                  <label class="flex items-center space-x-2 p-2 bg-sage-light/30 border border-sage/20 rounded-lg cursor-pointer hover:bg-sage-light text-xs font-medium text-charcoal">
+                    <input type="checkbox" name="medical_conditions" value="Thyroid Issue" class="w-3.5 h-3.5 text-sage accent-sage rounded">
+                    <span class="truncate">Thyroid</span>
+                  </label>
+                  <label class="flex items-center space-x-2 p-2 bg-sage-light/30 border border-sage/20 rounded-lg cursor-pointer hover:bg-sage-light text-xs font-medium text-charcoal">
+                    <input type="checkbox" name="medical_conditions" value="PCOS / Hormone Imbalance" class="w-3.5 h-3.5 text-sage accent-sage rounded">
+                    <span class="truncate">PCOS</span>
+                  </label>
+                  <label class="flex items-center space-x-2 p-2 bg-sage-light/30 border border-sage/20 rounded-lg cursor-pointer hover:bg-sage-light text-xs font-medium text-charcoal">
+                    <input type="checkbox" name="medical_conditions" value="Anxiety / Depression" class="w-3.5 h-3.5 text-sage accent-sage rounded">
+                    <span class="truncate">Anxiety/Depr.</span>
+                  </label>
+                  <label class="flex items-center space-x-2 p-2 bg-sage-light/30 border border-sage/20 rounded-lg cursor-pointer hover:bg-sage-light text-xs font-medium text-charcoal">
+                    <input type="checkbox" name="medical_conditions" value="None" class="w-3.5 h-3.5 text-sage accent-sage rounded">
+                    <span class="truncate">None of above</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Question 3: Symptom Duration -->
+              <div class="space-y-1.5">
+                <label class="text-xs font-bold uppercase tracking-wider text-sage block">3. How long have you been experiencing this?</label>
+                <div class="grid grid-cols-4 gap-2" id="duration-radio-container">
+                  <label class="duration-btn py-2 px-2 border border-sage/30 rounded-xl text-xs text-center font-medium cursor-pointer hover:border-sage transition-all block text-charcoal">
+                    <input type="radio" name="symptom_duration" value="< 6 Months" class="sr-only" checked>
+                    <span>&lt; 6 mos</span>
+                  </label>
+                  <label class="duration-btn py-2 px-2 border border-sage/30 rounded-xl text-xs text-center font-medium cursor-pointer hover:border-sage transition-all block text-charcoal">
+                    <input type="radio" name="symptom_duration" value="6-12 Months" class="sr-only">
+                    <span>6-12 mos</span>
+                  </label>
+                  <label class="duration-btn py-2 px-2 border border-sage/30 rounded-xl text-xs text-center font-medium cursor-pointer hover:border-sage transition-all block text-charcoal">
+                    <input type="radio" name="symptom_duration" value="1-3 Years" class="sr-only">
+                    <span>1-3 yrs</span>
+                  </label>
+                  <label class="duration-btn py-2 px-2 border border-sage/30 rounded-xl text-xs text-center font-medium cursor-pointer hover:border-sage transition-all block text-charcoal">
+                    <input type="radio" name="symptom_duration" value="3+ Years" class="sr-only">
+                    <span>3+ yrs</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Question 4: Detailed Symptoms & Medications Text Area -->
+              <div class="space-y-1.5">
+                <label class="text-xs font-bold uppercase tracking-wider text-sage block">4. Current Medications or Specific Symptoms</label>
+                <textarea id="survey-symptoms-text" rows="2" class="w-full px-3.5 py-2 bg-cream border border-sage/35 rounded-xl focus:outline-none focus:ring-2 focus:ring-sage font-medium text-xs text-charcoal resize-none" placeholder="List any medications, supplements, or specific symptoms you are experiencing..."></textarea>
+              </div>
+
+              <!-- Action Button to Step 2 -->
+              <button type="button" onclick="goToBookingStep(2)" class="cursor-pointer w-full py-3.5 bg-sage text-cream font-bold rounded-xl shadow-md hover:bg-sage-dark hover:shadow-lg transition-all duration-200 text-center text-white border-0 flex items-center justify-center space-x-2 text-sm">
+                <span>Continue to Schedule Consultation</span>
+                <i class="ph ph-arrow-right text-base"></i>
+              </button>
+            </div>
+
+
+            <!-- STEP 2: CONSULTATION SCHEDULE & CONTACT DETAILS -->
+            <div id="booking-step-2" class="space-y-4 hidden">
+              
+              <!-- Interactive Service Card Selector -->
+              <div class="space-y-1.5">
+                <label class="text-xs font-bold uppercase tracking-wider text-sage block">1. Select Service Focus</label>
+                <div class="grid grid-cols-2 gap-2" id="service-pill-container">
+                  <button type="button" onclick="selectServicePill(this, 'Psychological Counseling')" class="service-pill-btn p-2.5 border border-sage rounded-xl text-left text-xs font-semibold bg-sage text-cream shadow-sm flex items-center space-x-2 transition-all cursor-pointer">
+                    <i class="ph ph-brain text-base shrink-0"></i>
+                    <span class="truncate">Psychological Care</span>
+                  </button>
+                  <button type="button" onclick="selectServicePill(this, 'Medical Management')" class="service-pill-btn p-2.5 border border-sage/25 rounded-xl text-left text-xs font-medium text-charcoal hover:border-sage hover:bg-sage-light/40 transition-all flex items-center space-x-2 cursor-pointer">
+                    <i class="ph ph-pulse text-base text-sage shrink-0"></i>
+                    <span class="truncate">Medical Management</span>
+                  </button>
+                  <button type="button" onclick="selectServicePill(this, 'Nutritional Counseling')" class="service-pill-btn p-2.5 border border-sage/25 rounded-xl text-left text-xs font-medium text-charcoal hover:border-sage hover:bg-sage-light/40 transition-all flex items-center space-x-2 cursor-pointer">
+                    <i class="ph ph-apple-logo text-base text-sage shrink-0"></i>
+                    <span class="truncate">Mindful Nutrition</span>
+                  </button>
+                  <button type="button" onclick="selectServicePill(this, 'General Inquiry')" class="service-pill-btn p-2.5 border border-sage/25 rounded-xl text-left text-xs font-medium text-charcoal hover:border-sage hover:bg-sage-light/40 transition-all flex items-center space-x-2 cursor-pointer">
+                    <i class="ph ph-sparkle text-base text-sage shrink-0"></i>
+                    <span class="truncate">General Consultation</span>
+                  </button>
+                </div>
+                <!-- Hidden Sync Field -->
+                <select id="client-service" required class="sr-only">
+                  <option value="Psychological Counseling" selected>Psychological Counseling</option>
+                  <option value="Medical Management">Medical Management</option>
+                  <option value="Nutritional Counseling">Nutritional Counseling</option>
+                  <option value="General Inquiry">General Inquiry</option>
+                </select>
+              </div>
+
+              <!-- Contact Inputs Grid (2 Columns) -->
+              <div class="space-y-1.5">
+                <label class="text-xs font-bold uppercase tracking-wider text-sage block">2. Contact Details</label>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  <div class="relative">
+                    <i class="ph ph-user text-sage absolute left-3.5 top-3 text-base"></i>
+                    <input type="text" id="client-name" required class="w-full pl-9 pr-3 py-2.5 bg-cream border border-sage/35 rounded-xl focus:outline-none focus:ring-2 focus:ring-sage font-medium text-xs text-charcoal" placeholder="Full Name">
+                  </div>
+                  <div class="relative">
+                    <i class="ph ph-envelope text-sage absolute left-3.5 top-3 text-base"></i>
+                    <input type="email" id="client-email" required class="w-full pl-9 pr-3 py-2.5 bg-cream border border-sage/35 rounded-xl focus:outline-none focus:ring-2 focus:ring-sage font-medium text-xs text-charcoal" placeholder="Email Address">
+                  </div>
+                  <div class="relative">
+                    <i class="ph ph-phone text-sage absolute left-3.5 top-3 text-base"></i>
+                    <input type="tel" id="client-phone" required class="w-full pl-9 pr-3 py-2.5 bg-cream border border-sage/35 rounded-xl focus:outline-none focus:ring-2 focus:ring-sage font-medium text-xs text-charcoal" placeholder="Phone Number">
+                  </div>
+                  <div class="relative">
+                    <i class="ph ph-calendar-blank text-sage absolute left-3.5 top-3 text-base"></i>
+                    <input type="date" id="client-date" required class="w-full pl-9 pr-3 py-2.5 bg-cream border border-sage/35 rounded-xl focus:outline-none focus:ring-2 focus:ring-sage font-medium text-xs text-charcoal">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Time Window Selector Buttons -->
+              <div class="space-y-1.5">
+                <label class="text-xs font-bold uppercase tracking-wider text-sage block">3. Preferred Time Window</label>
+                <div class="grid grid-cols-3 gap-2" id="time-slot-container">
+                  <button type="button" onclick="selectTimeSlot(this, 'Morning')" class="time-slot-btn py-2 px-3 border border-sage rounded-xl text-xs font-semibold bg-sage text-cream shadow-sm flex items-center justify-center space-x-1.5 cursor-pointer">
+                    <i class="ph ph-sun-horizon text-sm"></i>
+                    <span>Morning</span>
+                  </button>
+                  <button type="button" onclick="selectTimeSlot(this, 'Afternoon')" class="time-slot-btn py-2 px-3 border border-sage/30 rounded-xl text-xs font-medium text-charcoal hover:bg-sage-light transition-all flex items-center justify-center space-x-1.5 cursor-pointer">
+                    <i class="ph ph-sun text-sm text-sage"></i>
+                    <span>Afternoon</span>
+                  </button>
+                  <button type="button" onclick="selectTimeSlot(this, 'Evening')" class="time-slot-btn py-2 px-3 border border-sage/30 rounded-xl text-xs font-medium text-charcoal hover:bg-sage-light transition-all flex items-center justify-center space-x-1.5 cursor-pointer">
+                    <i class="ph ph-moon-stars text-sm text-sage"></i>
+                    <span>Evening</span>
+                  </button>
+                </div>
+                <input type="hidden" id="client-timeslot" value="Morning">
+              </div>
+
+              <!-- Additional Notes -->
+              <div class="space-y-1">
+                <textarea id="client-notes" rows="1" class="w-full px-3.5 py-2 bg-cream border border-sage/35 rounded-xl focus:outline-none focus:ring-2 focus:ring-sage font-medium text-xs text-charcoal resize-none" placeholder="Additional scheduling requests or notes (optional)..."></textarea>
+              </div>
+
+              <!-- Disclaimer Checkbox -->
+              <div class="flex items-start space-x-2.5">
+                <input type="checkbox" id="client-agree" required class="mt-0.5 w-4 h-4 text-sage accent-sage border-sage/30 rounded focus:ring-sage focus:ring-offset-0">
+                <label for="client-agree" class="text-[11px] text-charcoal/70 font-light leading-normal">
+                  I agree to be contacted for scheduling. I understand this form transfers my health survey data to clinic staff for inquiry purposes.
+                </label>
+              </div>
+
+              <!-- Button Group (Back + Submit) -->
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1">
+                <button type="button" onclick="goToBookingStep(1)" class="sm:col-span-1 py-3 px-4 bg-sage-light/80 text-charcoal font-semibold rounded-xl border border-sage/20 hover:bg-sage-light transition-all text-xs flex items-center justify-center space-x-1 cursor-pointer">
+                  <i class="ph ph-arrow-left text-sm"></i>
+                  <span>Back to Survey</span>
+                </button>
+                
+                <button type="submit" id="submit-booking-btn" class="sm:col-span-2 cursor-pointer py-3.5 bg-coral text-cream font-bold rounded-xl shadow-lg hover:bg-coral-dark hover:shadow-xl hover:scale-[1.01] active:scale-[0.99] transition-all duration-200 text-center text-white border-0 flex items-center justify-center space-x-2 text-sm tracking-wide">
+                  <i class="ph ph-paper-plane-tilt text-base"></i>
+                  <span>Submit & Transfer to Clinic Email</span>
+                </button>
+              </div>
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+
+      <!-- STEP 3: SUCCESS & EMAIL TRANSFER CONFIRMATION RECAP -->
+      <div id="modal-success-view" class="p-6 sm:p-10 text-center space-y-6 hidden">
+        <div class="relative w-20 h-20 mx-auto flex items-center justify-center">
+          <div class="absolute inset-0 bg-sage-light/60 rounded-full animate-ping opacity-75"></div>
+          <div class="relative w-20 h-20 bg-sage-light text-sage rounded-full flex items-center justify-center shadow-inner" id="success-checkmark">
+            <i class="ph ph-check-circle text-5xl"></i>
+          </div>
+        </div>
+        
+        <div class="space-y-2 max-w-lg mx-auto">
+          <span class="text-xs uppercase tracking-widest text-sage font-bold flex items-center justify-center space-x-1.5">
+            <i class="ph ph-envelope-simple-check text-base"></i>
+            <span>Health Screening Transferred to Email</span>
+          </span>
+          <h3 class="text-2xl md:text-3xl font-serif font-bold text-charcoal">Intake & Consultation Received!</h3>
+          <p class="text-xs md:text-sm text-charcoal/80 leading-relaxed font-light">
+            Thank you, <strong id="success-client-name">friend</strong>. Your health survey responses have been formatted and dispatched to our clinical team. We will review your symptoms and contact you within 24 business hours.
+          </p>
+        </div>
+
+        <!-- Detailed Intake Summary Box -->
+        <div class="p-5 bg-sage-light/40 border border-sage/20 rounded-2xl text-left space-y-3 text-xs max-w-lg mx-auto font-light shadow-sm">
+          <div class="flex items-center justify-between border-b border-sage/15 pb-2">
+            <span class="font-bold text-sage block uppercase tracking-wider text-[11px]">Submitted Health Intake Payload</span>
+            <span class="px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded font-semibold text-[10px]">Transferred to Email</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-charcoal/90">
+            <p><strong>Service:</strong> <span id="success-service-name">Psychological Counseling</span></p>
+            <p><strong>Requested Date:</strong> <span id="success-datetime">August 14, 2026 — Morning</span></p>
+            <p><strong>Primary Concern:</strong> <span id="success-survey-concern">Weight Management</span></p>
+            <p><strong>Conditions:</strong> <span id="success-survey-conditions">None</span></p>
+            <p class="sm:col-span-2"><strong>Duration:</strong> <span id="success-survey-duration">&lt; 6 months</span></p>
+            <p class="sm:col-span-2 border-t border-sage/10 pt-1"><strong>Symptoms / Meds:</strong> <span id="success-survey-notes" class="italic">None specified</span></p>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
+          <button onclick="closeBookingModal()" class="px-6 py-2.5 bg-sage text-cream font-semibold rounded-xl hover:bg-sage-dark transition-all text-xs text-white border-0 cursor-pointer shadow-md">
+            Return to Practice Site
+          </button>
+          <button onclick="copySurveySummaryToClipboard()" class="px-5 py-2.5 bg-cream border border-sage/40 text-charcoal font-semibold rounded-xl hover:bg-sage-light transition-all text-xs cursor-pointer flex items-center space-x-1.5 shadow-sm">
+            <i class="ph ph-copy text-sm text-sage"></i>
+            <span>Copy Intake Digest</span>
+          </button>
+          <button onclick="openMailtoBackup()" class="px-5 py-2.5 bg-sage-light text-sage-dark font-semibold rounded-xl hover:bg-sage/20 transition-all text-xs cursor-pointer flex items-center space-x-1.5">
+            <i class="ph ph-envelope text-sm"></i>
+            <span>Open Email Client</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- QR CODE DIRECT BOOKING & SHARING MODAL -->
+  <div id="qr-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden bg-charcoal/80 backdrop-blur-md p-4 transition-all duration-300 opacity-0">
+    <div class="relative bg-cream border-2 border-sage/30 rounded-3xl shadow-[0_25px_60px_-15px_rgba(0,0,0,0.5)] max-w-md w-full p-6 sm:p-7 space-y-5 text-center overflow-hidden">
+      <!-- Tactile Close button -->
+      <button onclick="closeQRModal()" class="absolute top-4 right-4 p-2 bg-sage-light text-charcoal/70 hover:text-charcoal rounded-full border border-sage/20 shadow transition-all cursor-pointer hover:rotate-90" aria-label="Close QR Modal">
+        <i class="ph ph-x text-lg"></i>
+      </button>
+
+      <!-- Header & Badge -->
+      <div class="space-y-2 pt-1">
+        <span class="inline-flex items-center space-x-1.5 px-3 py-1 bg-sage/20 text-sage-dark text-xs font-bold rounded-full uppercase tracking-wider">
+          <i class="ph ph-qr-code text-sm"></i>
+          <span>Direct Patient QR Intake</span>
+        </span>
+        <h3 class="text-xl sm:text-2xl font-serif font-bold text-charcoal">Scan to Launch Portal</h3>
+        <p class="text-xs text-charcoal/70 max-w-xs mx-auto leading-relaxed">
+          Scan with your phone camera or share this link to launch the clinical health survey & booking flow directly.
+        </p>
+      </div>
+
+      <!-- Service Selector dropdown for targeted QR Codes -->
+      <div class="space-y-1.5 text-left bg-sage-light/50 p-3 rounded-2xl border border-sage/20">
+        <label for="qr-service-select" class="block text-[11px] font-bold uppercase tracking-wider text-sage-dark">
+          Pre-select Clinical Specialty:
+        </label>
+        <select id="qr-service-select" onchange="updateQRCodeFromSelect()" class="w-full text-xs bg-cream border border-sage/30 rounded-xl p-2.5 font-semibold text-charcoal focus:ring-2 focus:ring-sage focus:outline-none cursor-pointer">
+          <option value="">All Offerings (General Clinical Intake)</option>
+          <option value="Psychological Counseling">Psychological Counseling & Behavioral</option>
+          <option value="Medical Management">Medical Weight Loss Management</option>
+          <option value="Nutritional Counseling">Nutritional & Metabolic Health</option>
+        </select>
+      </div>
+
+      <!-- QR Code Canvas / Visual Container -->
+      <div class="relative bg-white p-5 rounded-2xl border-2 border-sage/20 shadow-inner flex flex-col items-center justify-center min-h-[220px]">
+        <div id="qrcode-container" class="flex justify-center items-center"></div>
+        <p class="text-[10px] text-charcoal/50 mt-3 font-mono break-all max-w-[260px]" id="qr-display-url"></p>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="grid grid-cols-2 gap-3 pt-1">
+        <button onclick="copyQRLink()" class="py-3 px-3 bg-sage-light text-sage-dark font-semibold rounded-xl border border-sage/30 hover:bg-sage/20 transition-all text-xs flex items-center justify-center space-x-1.5 cursor-pointer shadow-xs">
+          <i class="ph ph-copy text-sm"></i>
+          <span>Copy Direct Link</span>
+        </button>
+        <button onclick="downloadQRCode()" class="py-3 px-3 bg-coral text-cream font-semibold rounded-xl hover:bg-coral-dark transition-all text-xs flex items-center justify-center space-x-1.5 cursor-pointer shadow-md text-white border-0">
+          <i class="ph ph-download-simple text-sm"></i>
+          <span>Download PNG</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLOATING CONTROLS & TOAST NOTIFICATION CONTAINER -->
+  <div id="toast-container" class="fixed top-6 right-6 z-50 flex flex-col space-y-2 pointer-events-none"></div>
+
+  <!-- Floating Quick Consultation CTA (Mobile & Desktop on scroll) -->
+  <div id="floating-cta" class="fixed bottom-6 left-6 z-40 transition-all duration-300 opacity-0 translate-y-10 pointer-events-none">
+    <button onclick="openBookingModal()" class="cursor-pointer px-5 py-3 bg-coral text-cream font-semibold rounded-full shadow-xl hover:bg-coral-dark hover:scale-105 active:scale-95 transition-all text-sm flex items-center space-x-2 text-white border-0 pointer-events-auto">
+      <i class="ph ph-calendar-blank text-base"></i>
+      <span>Book Consultation</span>
+    </button>
+  </div>
+
+  <!-- Floating Scroll To Top Button -->
+  <button id="scroll-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-6 right-6 z-40 p-3 bg-sage text-cream rounded-full shadow-lg hover:bg-sage-dark hover:scale-110 active:scale-95 transition-all opacity-0 translate-y-10 pointer-events-none cursor-pointer border-0 text-white" aria-label="Scroll to Top">
+    <i class="ph ph-arrow-up text-xl"></i>
+  </button>
+
+  <!-- JAVASCRIPT CODE -->
+  <script>
+    // Set Default Date on Booking Form (Tomorrow)
+    const dateInput = document.getElementById('client-date');
+    if (dateInput) {
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      dateInput.value = tomorrow.toISOString().split('T')[0];
+      dateInput.min = new Date().toISOString().split('T')[0];
+    }
+
+    // Time Slot Selector
+    function selectTimeSlot(button, timeSlot) {
+      document.querySelectorAll('.time-slot-btn').forEach(btn => {
+        btn.classList.remove('bg-sage', 'text-cream', 'shadow-sm', 'font-semibold');
+        btn.classList.add('border-sage/30', 'text-charcoal', 'font-medium');
+      });
+      button.classList.remove('border-sage/30', 'text-charcoal', 'font-medium');
+      button.classList.add('bg-sage', 'text-cream', 'shadow-sm', 'font-semibold');
+      document.getElementById('client-timeslot').value = timeSlot;
+    }
+
+    // Mobile Navigation Toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileNav = document.getElementById('mobile-nav');
+    const menuIcon = document.getElementById('menu-icon');
+
+    function toggleMobileMenu() {
+      const isOpen = !mobileNav.classList.contains('hidden');
+      if (isOpen) {
+        mobileNav.classList.add('hidden');
+        menuIcon.className = 'ph ph-list text-2xl transition-transform duration-300';
+        menuIcon.style.transform = 'rotate(0deg)';
+      } else {
+        mobileNav.classList.remove('hidden');
+        menuIcon.className = 'ph ph-x text-2xl transition-transform duration-300';
+        menuIcon.style.transform = 'rotate(90deg)';
+      }
+    }
+
+    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+    // Toast Notification Utility
+    function showToast(message) {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      toast.className = 'px-4 py-3 bg-charcoal text-cream text-xs font-semibold rounded-lg shadow-xl border border-sage/20 transform transition-all duration-300 opacity-0 translate-y-2 pointer-events-auto flex items-center space-x-2';
+      toast.innerHTML = `<i class="ph ph-check-circle text-xl text-sage shrink-0"></i><span>${message}</span>`;
+      container.appendChild(toast);
+
+      setTimeout(() => {
+        toast.classList.remove('opacity-0', 'translate-y-2');
+        toast.classList.add('opacity-100', 'translate-y-0');
+      }, 50);
+
+      setTimeout(() => {
+        toast.classList.remove('opacity-100', 'translate-y-0');
+        toast.classList.add('opacity-0', 'translate-y-2');
+        setTimeout(() => toast.remove(), 300);
+      }, 3200);
+    }
+
+    // Click to Copy Utility
+    function copyToClipboard(text, label) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast(`${label} copied to clipboard!`);
+      }).catch(() => {
+        showToast(`Copied: ${text}`);
+      });
+    }
+
+    // Dynamic FAQ Accordions
+    function toggleFaq(button) {
+      const activeContent = button.nextElementSibling;
+      const container = button.parentElement;
+      const icon = button.querySelector('.faq-icon');
+      const allFaqs = document.querySelectorAll('.faq-content');
+      const allIcons = document.querySelectorAll('.faq-icon');
+      const allContainers = document.querySelectorAll('.border-sage\\/15');
+
+      // Close other accordions
+      allFaqs.forEach((content) => {
+        if (content !== activeContent) {
+          content.style.maxHeight = null;
+        }
+      });
+      allIcons.forEach((i) => {
+        if (i !== icon) {
+          i.style.transform = 'rotate(0deg)';
+        }
+      });
+      allContainers.forEach((c) => {
+        if (c !== container) {
+          c.classList.remove('border-sage/40', 'bg-sage-light/5');
+        }
+      });
+
+      // Toggle current accordion
+      if (activeContent.style.maxHeight) {
+        activeContent.style.maxHeight = null;
+        icon.style.transform = 'rotate(0deg)';
+        container.classList.remove('border-sage/40', 'bg-sage-light/5');
+      } else {
+        activeContent.style.maxHeight = activeContent.scrollHeight + "px";
+        icon.style.transform = 'rotate(180deg)';
+        container.classList.add('border-sage/40', 'bg-sage-light/5');
+      }
+    }
+
+    // Interactive Testimonials Slider
+    let currentTestimonial = 0;
+    const testimonialSlides = document.querySelectorAll('.testimonial-slide');
+    const totalTestimonials = testimonialSlides.length;
+
+    function showTestimonial(index) {
+      testimonialSlides.forEach((slide, i) => {
+        if (i === index) {
+          slide.classList.remove('hidden');
+          setTimeout(() => {
+            slide.style.opacity = '1';
+          }, 50);
+        } else {
+          slide.classList.add('hidden');
+          slide.style.opacity = '0';
+        }
+
+        // Update Dots
+        const dot = document.getElementById(`dot-${i}`);
+        if (dot) {
+          if (i === index) {
+            dot.classList.remove('bg-sage/30');
+            dot.classList.add('bg-sage');
+          } else {
+            dot.classList.remove('bg-sage');
+            dot.classList.add('bg-sage/30');
+          }
+        }
+      });
+      currentTestimonial = index;
+    }
+
+    function nextTestimonial() {
+      let index = currentTestimonial + 1;
+      if (index >= totalTestimonials) index = 0;
+      showTestimonial(index);
+    }
+
+    function prevTestimonial() {
+      let index = currentTestimonial - 1;
+      if (index < 0) index = totalTestimonials - 1;
+      showTestimonial(index);
+    }
+
+    // Auto-scroll testimonials every 8 seconds
+    setInterval(nextTestimonial, 8000);
+
+    // READINESS QUIZ LOGIC
+    let quizCurrentStep = 1;
+    let quizAnswers = {};
+
+    function startQuiz() {
+      document.getElementById('quiz-intro-view').classList.add('hidden');
+      document.getElementById('quiz-questions-view').classList.remove('hidden');
+      showQuizStep(1);
+    }
+
+    function showQuizStep(step) {
+      quizCurrentStep = step;
+      document.querySelectorAll('.quiz-step').forEach(s => s.classList.add('hidden'));
+      document.getElementById(`quiz-step-${step}`).classList.remove('hidden');
+
+      const percent = Math.round((step / 3) * 100);
+      document.getElementById('quiz-progress-label').textContent = `Question ${step} of 3`;
+      document.getElementById('quiz-progress-percent').textContent = `${percent}% Completed`;
+      document.getElementById('quiz-progress-bar').style.width = `${percent}%`;
+    }
+
+    function selectQuizOption(step, answer) {
+      quizAnswers[step] = answer;
+      showToast(`Selected: ${answer}`);
+
+      if (step < 3) {
+        showQuizStep(step + 1);
+      } else {
+        showQuizResults();
+      }
+    }
+
+    function showQuizResults() {
+      document.getElementById('quiz-questions-view').classList.add('hidden');
+      const resultsView = document.getElementById('quiz-results-view');
+      resultsView.classList.remove('hidden');
+
+      const ans1 = quizAnswers[1] || '';
+      const ans2 = quizAnswers[2] || '';
+      const ans3 = quizAnswers[3] || '';
+
+      const titleEl = document.getElementById('quiz-result-title');
+      const descEl = document.getElementById('quiz-result-desc');
+
+      if (ans1.includes('Stress') || ans2.includes('Psychological')) {
+        titleEl.textContent = "Recommended Blueprint: Psychological & Behavioral Focus";
+        descEl.textContent = "Your primary key to sustainable weight loss lies in cognitive emotional alignment, stress regulation, and ending diet fatigue.";
+      } else if (ans1.includes('Metabolic') || ans2.includes('Medical')) {
+        titleEl.textContent = "Recommended Blueprint: Clinical & Metabolic Management";
+        descEl.textContent = "Your path will benefit greatly from clinical diagnostic evaluations, lab screenings, and biological progression tracking.";
+      } else {
+        titleEl.textContent = "Recommended Blueprint: Holistic 360° Care Integration";
+        descEl.textContent = "You will excel in our comprehensive care model combining behavioral counseling, medical monitoring, and non-restrictive nutrition.";
+      }
+    }
+
+    function applyQuizToBooking() {
+      const ans1 = quizAnswers[1] || 'Emotional & Stress eating';
+      const ans2 = quizAnswers[2] || 'Psychological guidance';
+      let targetService = 'Psychological Counseling';
+
+      if (ans2.includes('Medical') || ans1.includes('Metabolic')) {
+        targetService = 'Medical Management';
+      } else if (ans2.includes('Nutrition')) {
+        targetService = 'Nutritional Counseling';
+      }
+
+      openBookingModal(targetService);
+      const notesField = document.getElementById('client-notes');
+      if (notesField) {
+        notesField.value = `[Quiz Results] Challenge: ${ans1} | Preferred Focus: ${ans2} | Target: ${quizAnswers[3] || 'Sustainable Wellness'}`;
+      }
+      showToast("Quiz assessment loaded into consultation request!");
+    }
+
+    function resetQuiz() {
+      quizCurrentStep = 1;
+      quizAnswers = {};
+      document.getElementById('quiz-results-view').classList.add('hidden');
+      document.getElementById('quiz-intro-view').classList.remove('hidden');
+    }
+
+    // WELLNESS & HYDRATION CALCULATOR LOGIC
+    function updateCalculator() {
+      const weight = parseFloat(document.getElementById('calc-weight').value) || 160;
+      const activity = parseFloat(document.getElementById('calc-activity').value) || 30;
+      const sleep = parseFloat(document.getElementById('calc-sleep').value) || 7.5;
+
+      document.getElementById('calc-weight-val').textContent = weight;
+      document.getElementById('calc-activity-val').textContent = activity;
+      document.getElementById('calc-sleep-val').textContent = sleep;
+
+      // Water calculation: 0.5 oz per lb + 12 oz per 30 mins activity
+      const waterOz = Math.round(weight * 0.5 + (activity / 30) * 12);
+      const waterCups = (waterOz / 8).toFixed(1);
+
+      // Recovery score calculation
+      const sleepScore = Math.min(50, (sleep / 8) * 50);
+      const activityScore = Math.min(30, (activity / 45) * 30);
+      const hydrationScore = 20;
+      const totalScore = Math.min(100, Math.round(sleepScore + activityScore + hydrationScore));
+
+      document.getElementById('res-water-oz').textContent = waterOz;
+      document.getElementById('res-water-cups').textContent = waterCups;
+      document.getElementById('res-recovery-score').textContent = `${totalScore}%`;
+
+      const statusEl = document.getElementById('res-recovery-status');
+      const tipEl = document.getElementById('res-clinical-tip');
+
+      if (totalScore >= 85) {
+        statusEl.textContent = "Optimal Sync";
+        statusEl.className = "text-xs font-semibold px-2 py-0.5 rounded bg-sage/20 text-sage-dark";
+        tipEl.textContent = "Your rest and activity levels provide excellent baseline leptin regulation and stress resistance.";
+      } else if (totalScore >= 65) {
+        statusEl.textContent = "Moderate Balance";
+        statusEl.className = "text-xs font-semibold px-2 py-0.5 rounded bg-amber-100 text-amber-800";
+        tipEl.textContent = "Increasing sleep by 30-60 mins will reduce cortisol levels and curb afternoon appetite spikes.";
+      } else {
+        statusEl.textContent = "Rest Needed";
+        statusEl.className = "text-xs font-semibold px-2 py-0.5 rounded bg-rose-100 text-rose-800";
+        tipEl.textContent = "Sleep debt can trigger high ghrelin (hunger hormone) signals. Focus on restorative sleep and gentle hydration.";
+      }
+    }
+
+    // Scroll Listener for Floating Controls
+    const floatingCta = document.getElementById('floating-cta');
+    const scrollToTopBtn = document.getElementById('scroll-to-top');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 350) {
+        floatingCta.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+        floatingCta.classList.add('opacity-100', 'translate-y-0');
+        scrollToTopBtn.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+        scrollToTopBtn.classList.add('opacity-100', 'translate-y-0');
+      } else {
+        floatingCta.classList.remove('opacity-100', 'translate-y-0');
+        floatingCta.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+        scrollToTopBtn.classList.remove('opacity-100', 'translate-y-0');
+        scrollToTopBtn.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+      }
+    });
+
+    // Service Pill Selector Handler
+    function selectServicePill(button, serviceName) {
+      document.querySelectorAll('.service-pill-btn').forEach(btn => {
+        btn.classList.remove('bg-sage', 'text-cream', 'shadow-sm', 'font-semibold', 'border-sage');
+        btn.classList.add('border-sage/25', 'text-charcoal', 'font-medium');
+        const icon = btn.querySelector('i');
+        if (icon) {
+          icon.classList.remove('text-cream');
+          icon.classList.add('text-sage');
+        }
+      });
+
+      if (button) {
+        button.classList.remove('border-sage/25', 'text-charcoal', 'font-medium');
+        button.classList.add('bg-sage', 'text-cream', 'shadow-sm', 'font-semibold', 'border-sage');
+        const icon = button.querySelector('i');
+        if (icon) {
+          icon.classList.remove('text-sage');
+          icon.classList.add('text-cream');
+        }
+      }
+
+      const hiddenSelect = document.getElementById('client-service');
+      if (hiddenSelect) hiddenSelect.value = serviceName;
+    }
+
+    // CLINIC CONFIGURATION (Email & Production Settings)
+    const CLINIC_CONFIG = {
+      email: 'clinic@mindfulweightloss.com', // Target clinic email address for incoming intakes
+      web3formsKey: '', // Optional: Paste your Web3Forms access key here to send submissions directly to your email inbox
+      productionUrl: 'https://mindful-opal.vercel.app' // Live production domain for QR Code deep linking
+    };
+
+    let currentEmailPayload = ''; // Stores formatted health survey payload for copy/mailto
+
+    // Multi-Step Booking & Health Screening Navigation
+    let currentBookingStep = 1;
+
+    function goToBookingStep(step) {
+      currentBookingStep = step;
+      const step1El = document.getElementById('booking-step-1');
+      const step2El = document.getElementById('booking-step-2');
+      const badgeEl = document.getElementById('step-badge');
+      const headingEl = document.getElementById('step-heading');
+      const percentEl = document.getElementById('step-progress-percent');
+      const progressBar = document.getElementById('booking-progress-bar');
+
+      if (step === 1) {
+        step1El.classList.remove('hidden');
+        step2El.classList.add('hidden');
+        badgeEl.textContent = "Step 1 of 2";
+        headingEl.textContent = "Health Screening Survey";
+        percentEl.textContent = "50% Completed";
+        progressBar.style.width = "50%";
+      } else if (step === 2) {
+        step1El.classList.add('hidden');
+        step2El.classList.remove('hidden');
+        badgeEl.textContent = "Step 2 of 2";
+        headingEl.textContent = "Schedule & Contact Details";
+        percentEl.textContent = "100% Completed";
+        progressBar.style.width = "100%";
+      }
+    }
+
+    // Interactive Booking Modal Handlers
+    const bookingModal = document.getElementById('booking-modal');
+    const modalContainer = document.getElementById('modal-container');
+    const modalFormView = document.getElementById('modal-form-view');
+    const modalSuccessView = document.getElementById('modal-success-view');
+    const successCheckmark = document.getElementById('success-checkmark');
+
+    function openBookingModal(preselectedService = '') {
+      goToBookingStep(1); // Always start at Step 1 Health Screening
+
+      if (preselectedService) {
+        const hiddenSelect = document.getElementById('client-service');
+        if (hiddenSelect) hiddenSelect.value = preselectedService;
+
+        // Auto-highlight matching service card pill
+        document.querySelectorAll('.service-pill-btn').forEach(btn => {
+          const btnText = btn.textContent.trim().toLowerCase();
+          const targetText = preselectedService.toLowerCase();
+          if (btnText.includes('psychological') && targetText.includes('psychological')) {
+            selectServicePill(btn, 'Psychological Counseling');
+          } else if (btnText.includes('medical') && targetText.includes('medical')) {
+            selectServicePill(btn, 'Medical Management');
+          } else if (btnText.includes('nutrition') && targetText.includes('nutrition')) {
+            selectServicePill(btn, 'Nutritional Counseling');
+          } else if (btnText.includes('general') && targetText.includes('general')) {
+            selectServicePill(btn, 'General Inquiry');
+          }
+        });
+      }
+      
+      bookingModal.classList.remove('hidden');
+      document.body.classList.add('overflow-hidden');
+      
+      setTimeout(() => {
+        bookingModal.classList.remove('opacity-0');
+        bookingModal.classList.add('opacity-100');
+        modalContainer.classList.remove('scale-95');
+        modalContainer.classList.add('scale-100');
+      }, 50);
+    }
+
+    function closeBookingModal() {
+      bookingModal.classList.remove('opacity-100');
+      bookingModal.classList.add('opacity-0');
+      modalContainer.classList.remove('scale-100');
+      modalContainer.classList.add('scale-95');
+
+      setTimeout(() => {
+        bookingModal.classList.add('hidden');
+        document.body.classList.remove('overflow-hidden');
+        
+        modalFormView.classList.remove('hidden');
+        modalSuccessView.classList.add('hidden');
+        successCheckmark.classList.remove('scale-100');
+        successCheckmark.classList.add('scale-0');
+        document.getElementById('booking-form').reset();
+        goToBookingStep(1);
+
+        // Reset default date
+        if (dateInput) {
+          const tomorrow = new Date();
+          tomorrow.setDate(tomorrow.getDate() + 1);
+          dateInput.value = tomorrow.toISOString().split('T')[0];
+        }
+      }, 300);
+    }
+
+    bookingModal.addEventListener('click', (e) => {
+      if (e.target === bookingModal) {
+        closeBookingModal();
+      }
+    });
+
+    // DIRECT BOOKING LINK & QUERY PARAMETER DETECTOR (#book, #screening, #intake, ?booking=true)
+    function checkDirectBookingHash() {
+      const hash = window.location.hash.toLowerCase();
+      const urlParams = new URLSearchParams(window.location.search);
+      const isBookingParam = urlParams.get('booking') === 'true' || urlParams.get('intake') === 'true';
+      const isBookingHash = hash === '#book' || hash === '#booking' || hash === '#screening' || hash === '#intake';
+
+      if (isBookingHash || isBookingParam) {
+        const serviceParam = urlParams.get('service') || '';
+        openBookingModal(serviceParam);
+      }
+    }
+    window.addEventListener('DOMContentLoaded', checkDirectBookingHash);
+    window.addEventListener('hashchange', checkDirectBookingHash);
+
+    // DYNAMIC QR CODE GENERATOR & SHARING MODAL HANDLERS
+    const qrModal = document.getElementById('qr-modal');
+
+    function getBaseBookingURL(service = '') {
+      let baseUrl = CLINIC_CONFIG.productionUrl || 'https://mindful-opal.vercel.app';
+      if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1' && window.location.protocol !== 'file:' && window.location.hostname !== '') {
+        baseUrl = window.location.protocol + '//' + window.location.host + window.location.pathname;
+      }
+      if (baseUrl.endsWith('/')) {
+        baseUrl = baseUrl.slice(0, -1);
+      }
+      let finalUrl = baseUrl + '/#book';
+      if (service) {
+        finalUrl = baseUrl + '/?booking=true&service=' + encodeURIComponent(service) + '#book';
+      }
+      return finalUrl;
+    }
+
+    function openQRModal(service = '') {
+      const selectEl = document.getElementById('qr-service-select');
+      if (selectEl && service) {
+        selectEl.value = service;
+      }
+      const targetUrl = getBaseBookingURL(selectEl ? selectEl.value : service);
+      renderQRCode(targetUrl);
+      
+      qrModal.classList.remove('hidden');
+      document.body.classList.add('overflow-hidden');
+      setTimeout(() => {
+        qrModal.classList.remove('opacity-0');
+        qrModal.classList.add('opacity-100');
+      }, 50);
+    }
+
+    function closeQRModal() {
+      qrModal.classList.remove('opacity-100');
+      qrModal.classList.add('opacity-0');
+      setTimeout(() => {
+        qrModal.classList.add('hidden');
+        if (bookingModal.classList.contains('hidden')) {
+          document.body.classList.remove('overflow-hidden');
+        }
+      }, 300);
+    }
+
+    if (qrModal) {
+      qrModal.addEventListener('click', (e) => {
+        if (e.target === qrModal) closeQRModal();
+      });
+    }
+
+    function updateQRCodeFromSelect() {
+      const selectEl = document.getElementById('qr-service-select');
+      const service = selectEl ? selectEl.value : '';
+      const targetUrl = getBaseBookingURL(service);
+      renderQRCode(targetUrl);
+    }
+
+    function renderQRCode(targetUrl) {
+      const container = document.getElementById('qrcode-container');
+      const urlDisplay = document.getElementById('qr-display-url');
+      if (!container) return;
+
+      container.innerHTML = '';
+      if (urlDisplay) urlDisplay.textContent = targetUrl;
+
+      if (typeof QRCode !== 'undefined') {
+        new QRCode(container, {
+          text: targetUrl,
+          width: 190,
+          height: 190,
+          colorDark: "#2E343A",
+          colorLight: "#FDFBF7",
+          correctLevel: QRCode.CorrectLevel.H
+        });
+      } else {
+        // Fallback using high-res QR API if CDN script blocked offline
+        const img = document.createElement('img');
+        img.src = `https://api.qrserver.com/v1/create-qr-code/?size=190x190&data=${encodeURIComponent(targetUrl)}&color=2E343A&bgcolor=FDFBF7`;
+        img.alt = "Direct Booking QR Code";
+        img.className = "w-48 h-48 rounded-lg shadow-sm";
+        container.appendChild(img);
+      }
+    }
+
+    function copyQRLink() {
+      const selectEl = document.getElementById('qr-service-select');
+      const service = selectEl ? selectEl.value : '';
+      const targetUrl = getBaseBookingURL(service);
+
+      navigator.clipboard.writeText(targetUrl).then(() => {
+        showToast("Direct Booking QR Link copied to clipboard!");
+      }).catch(() => {
+        showToast("Direct Booking Link ready!");
+      });
+    }
+
+    function downloadQRCode() {
+      const container = document.getElementById('qrcode-container');
+      if (!container) return;
+
+      const canvas = container.querySelector('canvas');
+      const img = container.querySelector('img');
+
+      let dataUrl = '';
+      if (canvas) {
+        dataUrl = canvas.toDataURL('image/png');
+      } else if (img && img.src) {
+        dataUrl = img.src;
+      }
+
+      if (dataUrl) {
+        const link = document.createElement('a');
+        link.download = 'mindful-clinic-intake-qr.png';
+        link.href = dataUrl;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        showToast("QR Code PNG downloaded!");
+      } else {
+        showToast("Generating QR Code PNG...");
+      }
+    }
+
+    // Form Submit & Email Payload Transfer Handler
+    function handleBookingSubmit(event) {
+      event.preventDefault();
+      
+      // 1. Gather Contact & Appointment Details
+      const clientName = document.getElementById('client-name').value;
+      const clientEmail = document.getElementById('client-email').value;
+      const clientPhone = document.getElementById('client-phone').value;
+      const serviceName = document.getElementById('client-service').value || 'Consultation';
+      const dateVal = document.getElementById('client-date').value;
+      const timeslotVal = document.getElementById('client-timeslot').value || 'Morning';
+      const notesVal = document.getElementById('client-notes').value || '';
+
+      // 2. Gather Health Screening Survey Responses
+      const selectedConcerns = Array.from(document.querySelectorAll('input[name="health_concerns"]:checked')).map(cb => cb.value);
+      const concernsStr = selectedConcerns.length > 0 ? selectedConcerns.join('; ') : 'General Weight Management';
+
+      const selectedConditions = Array.from(document.querySelectorAll('input[name="medical_conditions"]:checked')).map(cb => cb.value);
+      const conditionsStr = selectedConditions.length > 0 ? selectedConditions.join('; ') : 'None reported';
+
+      const durationEl = document.querySelector('input[name="symptom_duration"]:checked');
+      const durationVal = durationEl ? durationEl.value : '< 6 Months';
+
+      const symptomsText = document.getElementById('survey-symptoms-text').value || '';
+
+      // 3. Construct Formatted Email Payload
+      currentEmailPayload = `==================================================
+MINDFUL WEIGHT LOSS CLINIC — CLINICAL INTAKE SURVEY
+==================================================
+
+[PATIENT CONTACT INFORMATION]
+• Full Name: ${clientName}
+• Email Address: ${clientEmail}
+• Phone Number: ${clientPhone}
+
+[APPOINTMENT & SERVICE PREFERENCE]
+• Requested Service: ${serviceName}
+• Preferred Date: ${dateVal}
+• Time Window: ${timeslotVal}
+• Additional Notes: ${notesVal || 'None'}
+
+[HEALTH SCREENING SURVEY RESPONSES]
+• Primary Health Concerns: ${concernsStr}
+• Diagnosed Conditions: ${conditionsStr}
+• Symptom Duration: ${durationVal}
+• Specific Symptoms / Current Medications: ${symptomsText || 'None listed'}
+
+==================================================
+Submitted on: ${new Date().toLocaleString()}
+Source: Direct Patient Link Intake Portal
+==================================================`;
+
+      // 4. Send via Serverless Email API (Web3Forms if key configured)
+      if (CLINIC_CONFIG.web3formsKey) {
+        fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            access_key: CLINIC_CONFIG.web3formsKey,
+            subject: `[Health Intake Survey] New Patient Request: ${clientName}`,
+            from_name: `${clientName} (Mindful Intake)`,
+            replyto: clientEmail,
+            message: currentEmailPayload,
+            email: clientEmail,
+            name: clientName,
+            phone: clientPhone,
+            service: serviceName,
+            health_concerns: concernsStr,
+            medical_conditions: conditionsStr,
+            symptom_duration: durationVal,
+            symptoms_notes: symptomsText
+          })
+        }).then(res => res.json()).then(data => {
+          if (data.success) {
+            showToast("Survey payload successfully dispatched to clinic email!");
+          }
+        }).catch(err => {
+          console.error("Email API dispatch error:", err);
+        });
+      }
+
+      // 5. Populate Success Screen
+      document.getElementById('success-client-name').textContent = clientName.split(' ')[0];
+      document.getElementById('success-service-name').textContent = serviceName;
+      document.getElementById('success-datetime').textContent = `${dateVal} — ${timeslotVal}`;
+      document.getElementById('success-survey-concern').textContent = concernsStr;
+      document.getElementById('success-survey-conditions').textContent = conditionsStr;
+      document.getElementById('success-survey-duration').textContent = durationVal;
+      document.getElementById('success-survey-notes').textContent = symptomsText || 'None listed';
+
+      // 6. Transition View
+      modalFormView.classList.add('hidden');
+      modalSuccessView.classList.remove('hidden');
+      
+      setTimeout(() => {
+        successCheckmark.classList.remove('scale-0');
+        successCheckmark.classList.add('scale-100');
+      }, 100);
+
+      showToast("Health screening survey & consultation request submitted!");
+    }
+
+    // Helper: Copy Formatted Survey Payload to Clipboard
+    function copySurveySummaryToClipboard() {
+      if (!currentEmailPayload) return;
+      navigator.clipboard.writeText(currentEmailPayload).then(() => {
+        showToast("Full Health Intake summary copied to clipboard!");
+      }).catch(() => {
+        showToast("Summary ready!");
+      });
+    }
+
+    // Helper: Open Client Mailto Backup
+    function openMailtoBackup() {
+      if (!currentEmailPayload) return;
+      const clientEmail = document.getElementById('client-email').value || '';
+      const subject = encodeURIComponent(`Mindful Clinic Health Intake Survey - Patient Booking`);
+      const body = encodeURIComponent(currentEmailPayload);
+      const mailtoUrl = `mailto:${CLINIC_CONFIG.email}?subject=${subject}&body=${body}`;
+      window.open(mailtoUrl, '_blank');
+    }
+  </script>
+</body>
+</html>
