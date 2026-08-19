@@ -869,6 +869,22 @@
 
   </main>
 
+  <!-- FLOATING CONTROLS & TOAST NOTIFICATION CONTAINER -->
+  <div id="toast-container" class="fixed top-6 right-6 z-50 flex flex-col space-y-2 pointer-events-none"></div>
+
+  <!-- Floating Quick Consultation CTA (Mobile & Desktop on scroll) -->
+  <div id="floating-cta" class="fixed bottom-6 left-6 z-40 transition-all duration-300 opacity-0 translate-y-10 pointer-events-none">
+    <button onclick="openBookingModal()" class="cursor-pointer px-5 py-3 bg-coral text-cream font-semibold rounded-full shadow-xl hover:bg-coral-dark hover:scale-105 active:scale-95 transition-all text-sm flex items-center space-x-2 text-white border-0 pointer-events-auto">
+      <i class="ph ph-calendar-blank text-base"></i>
+      <span>Book Consultation</span>
+    </button>
+  </div>
+
+  <!-- Floating Scroll To Top Button -->
+  <button id="scroll-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-6 right-6 z-40 p-3 bg-sage text-cream rounded-full shadow-lg hover:bg-sage-dark hover:scale-110 active:scale-95 transition-all opacity-0 translate-y-10 pointer-events-none cursor-pointer border-0 text-white" aria-label="Scroll to Top">
+    <i class="ph ph-arrow-up text-xl"></i>
+  </button>
+
   <!-- FOOTER -->
   <footer class="bg-charcoal text-cream border-t border-sage/10 pt-16 pb-8">
     <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
@@ -1055,8 +1071,8 @@
           <div class="space-y-3">
             <div class="flex items-center justify-between">
               <div>
-                <span id="step-badge" class="px-2.5 py-0.5 bg-sage/20 text-sage-dark font-bold text-[11px] rounded-md uppercase tracking-wider">Step 1 of 2</span>
-                <h3 id="step-heading" class="text-xl sm:text-2xl font-serif font-bold text-charcoal mt-1">Health Screening Survey</h3>
+                <span id="step-badge" class="px-2.5 py-0.5 bg-sage/20 text-sage-dark font-bold text-[11px] rounded-md uppercase tracking-wider">Step 1 of 3</span>
+                <h3 id="step-heading" class="text-xl sm:text-2xl font-serif font-bold text-charcoal mt-1">Investigational Peptide Therapy Consent</h3>
               </div>
               <span id="step-progress-percent" class="text-xs font-semibold text-sage">50% Completed</span>
             </div>
@@ -1072,110 +1088,635 @@
             <!-- STEP 1: HEALTH SCREENING SURVEY -->
             <div id="booking-step-1" class="space-y-4">
               <p class="text-xs text-charcoal/70 font-light leading-relaxed">
-                Please complete this preliminary health screening so our clinical team understands what is wrong and how to best tailor your care.
+                Please complete this investigational peptide therapy consent.
+              </p>
+ 
+              <p class="text-xs text-charcoal/70 font-light leading-relaxed">
+                  Mindful Weightloss and Behavioral Health
               </p>
 
-              <!-- Question 1: Primary Health Concerns -->
+              <!-- Field 1: Patient Name -->
               <div class="space-y-2">
-                <label class="text-xs font-bold uppercase tracking-wider text-sage block">1. What is your primary health concern or symptom?</label>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2" id="survey-concerns-container">
-                  <label class="survey-chip flex items-center space-x-2 p-2.5 border border-sage/30 rounded-xl cursor-pointer hover:bg-sage-light/50 transition-all text-xs font-medium text-charcoal">
-                    <input type="checkbox" name="health_concerns" value="Difficulty Losing Weight / Weight Plateaus" class="w-4 h-4 text-sage accent-sage rounded">
-                    <span>Difficulty Losing Weight</span>
+                <div class="flex items-center gap-3 w-full">
+                   <label class="text-xs font-bold capitalize tracking-wider text-sage whitespace-nowrap">
+                    Patient Name:
                   </label>
-                  <label class="survey-chip flex items-center space-x-2 p-2.5 border border-sage/30 rounded-xl cursor-pointer hover:bg-sage-light/50 transition-all text-xs font-medium text-charcoal">
-                    <input type="checkbox" name="health_concerns" value="Binge / Emotional / Stress-Induced Eating" class="w-4 h-4 text-sage accent-sage rounded">
-                    <span>Emotional & Stress Eating</span>
-                  </label>
-                  <label class="survey-chip flex items-center space-x-2 p-2.5 border border-sage/30 rounded-xl cursor-pointer hover:bg-sage-light/50 transition-all text-xs font-medium text-charcoal">
-                    <input type="checkbox" name="health_concerns" value="Metabolic Sluggishness & Low Energy" class="w-4 h-4 text-sage accent-sage rounded">
-                    <span>Low Energy & Fatigue</span>
-                  </label>
-                  <label class="survey-chip flex items-center space-x-2 p-2.5 border border-sage/30 rounded-xl cursor-pointer hover:bg-sage-light/50 transition-all text-xs font-medium text-charcoal">
-                    <input type="checkbox" name="health_concerns" value="Hormonal & Thyroid Balance Issues" class="w-4 h-4 text-sage accent-sage rounded">
-                    <span>Hormone / Thyroid Concern</span>
-                  </label>
-                  <label class="survey-chip flex items-center space-x-2 p-2.5 border border-sage/30 rounded-xl cursor-pointer hover:bg-sage-light/50 transition-all text-xs font-medium text-charcoal">
-                    <input type="checkbox" name="health_concerns" value="Medication-Assisted Weight Management" class="w-4 h-4 text-sage accent-sage rounded">
-                    <span>GLP-1 / Medication Support</span>
-                  </label>
-                  <label class="survey-chip flex items-center space-x-2 p-2.5 border border-sage/30 rounded-xl cursor-pointer hover:bg-sage-light/50 transition-all text-xs font-medium text-charcoal">
-                    <input type="checkbox" name="health_concerns" value="Anxiety / Mood or Sleep Disturbance" class="w-4 h-4 text-sage accent-sage rounded">
-                    <span>Mood, Anxiety or Sleep</span>
-                  </label>
+                  <input 
+                    type="text" 
+                    id="survey-symptoms-text" 
+                    class="flex-1 bg-transparent border-b-2 border-sage/50 rounded-none px-2 py-1 focus:outline-none focus:border-sage font-medium text-xs text-charcoal" 
+                    placeholder="Please Enter Your Name..."
+                  >
                 </div>
               </div>
 
-              <!-- Question 2: Existing Diagnosed Conditions -->
+              <!-- Field 2: Date of Birth -->
               <div class="space-y-2">
-                <label class="text-xs font-bold uppercase tracking-wider text-sage block">2. Any diagnosed medical conditions?</label>
-                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                  <label class="flex items-center space-x-2 p-2 bg-sage-light/30 border border-sage/20 rounded-lg cursor-pointer hover:bg-sage-light text-xs font-medium text-charcoal">
-                    <input type="checkbox" name="medical_conditions" value="Hypertension (High BP)" class="w-3.5 h-3.5 text-sage accent-sage rounded">
-                    <span class="truncate">High BP</span>
+                <div class="flex items-center gap-3 w-full">
+                   <label class="text-xs font-bold capitalize tracking-wider text-sage whitespace-nowrap">
+                    Date of Birth:
                   </label>
-                  <label class="flex items-center space-x-2 p-2 bg-sage-light/30 border border-sage/20 rounded-lg cursor-pointer hover:bg-sage-light text-xs font-medium text-charcoal">
-                    <input type="checkbox" name="medical_conditions" value="Diabetes / Pre-Diabetes" class="w-3.5 h-3.5 text-sage accent-sage rounded">
-                    <span class="truncate">Pre-Diabetes</span>
-                  </label>
-                  <label class="flex items-center space-x-2 p-2 bg-sage-light/30 border border-sage/20 rounded-lg cursor-pointer hover:bg-sage-light text-xs font-medium text-charcoal">
-                    <input type="checkbox" name="medical_conditions" value="Thyroid Issue" class="w-3.5 h-3.5 text-sage accent-sage rounded">
-                    <span class="truncate">Thyroid</span>
-                  </label>
-                  <label class="flex items-center space-x-2 p-2 bg-sage-light/30 border border-sage/20 rounded-lg cursor-pointer hover:bg-sage-light text-xs font-medium text-charcoal">
-                    <input type="checkbox" name="medical_conditions" value="PCOS / Hormone Imbalance" class="w-3.5 h-3.5 text-sage accent-sage rounded">
-                    <span class="truncate">PCOS</span>
-                  </label>
-                  <label class="flex items-center space-x-2 p-2 bg-sage-light/30 border border-sage/20 rounded-lg cursor-pointer hover:bg-sage-light text-xs font-medium text-charcoal">
-                    <input type="checkbox" name="medical_conditions" value="Anxiety / Depression" class="w-3.5 h-3.5 text-sage accent-sage rounded">
-                    <span class="truncate">Anxiety/Depr.</span>
-                  </label>
-                  <label class="flex items-center space-x-2 p-2 bg-sage-light/30 border border-sage/20 rounded-lg cursor-pointer hover:bg-sage-light text-xs font-medium text-charcoal">
-                    <input type="checkbox" name="medical_conditions" value="None" class="w-3.5 h-3.5 text-sage accent-sage rounded">
-                    <span class="truncate">None of above</span>
-                  </label>
+                  <input 
+                    type="text" 
+                    id="survey-symptoms-text" 
+                    class="flex-1 bg-transparent border-b-2 border-sage/50 rounded-none px-2 py-1 focus:outline-none focus:border-sage font-medium text-xs text-charcoal" 
+                    placeholder="Please Enter Your DoB..."
+                  >
                 </div>
               </div>
 
-              <!-- Question 3: Symptom Duration -->
-              <div class="space-y-1.5">
-                <label class="text-xs font-bold uppercase tracking-wider text-sage block">3. How long have you been experiencing this?</label>
-                <div class="grid grid-cols-4 gap-2" id="duration-radio-container">
-                  <label class="duration-btn py-2 px-2 border border-sage/30 rounded-xl text-xs text-center font-medium cursor-pointer hover:border-sage transition-all block text-charcoal">
-                    <input type="radio" name="symptom_duration" value="< 6 Months" class="sr-only" checked>
-                    <span>&lt; 6 mos</span>
+              <!-- Field 3: Date -->
+             <div class="space-y-2">
+                <div class="flex items-center gap-3 w-full">
+                   <label class="text-xs font-bold capitalize tracking-wider text-sage whitespace-nowrap">
+                    Date:
                   </label>
-                  <label class="duration-btn py-2 px-2 border border-sage/30 rounded-xl text-xs text-center font-medium cursor-pointer hover:border-sage transition-all block text-charcoal">
-                    <input type="radio" name="symptom_duration" value="6-12 Months" class="sr-only">
-                    <span>6-12 mos</span>
-                  </label>
-                  <label class="duration-btn py-2 px-2 border border-sage/30 rounded-xl text-xs text-center font-medium cursor-pointer hover:border-sage transition-all block text-charcoal">
-                    <input type="radio" name="symptom_duration" value="1-3 Years" class="sr-only">
-                    <span>1-3 yrs</span>
-                  </label>
-                  <label class="duration-btn py-2 px-2 border border-sage/30 rounded-xl text-xs text-center font-medium cursor-pointer hover:border-sage transition-all block text-charcoal">
-                    <input type="radio" name="symptom_duration" value="3+ Years" class="sr-only">
-                    <span>3+ yrs</span>
-                  </label>
+                  <input 
+                    type="date" 
+                    id="survey-date" 
+                    class="flex-1 bg-transparent border-b-2 border-sage/50 rounded-none px-2 py-1 focus:outline-none focus:border-sage font-medium text-xs text-charcoal" 
+                  >
                 </div>
               </div>
 
-              <!-- Question 4: Detailed Symptoms & Medications Text Area -->
-              <div class="space-y-1.5">
-                <label class="text-xs font-bold uppercase tracking-wider text-sage block">4. Current Medications or Specific Symptoms</label>
-                <textarea id="survey-symptoms-text" rows="2" class="w-full px-3.5 py-2 bg-cream border border-sage/35 rounded-xl focus:outline-none focus:ring-2 focus:ring-sage font-medium text-xs text-charcoal resize-none" placeholder="List any medications, supplements, or specific symptoms you are experiencing..."></textarea>
+              <h3 class="text-md font-bold text-charcoal leading-relaxed">
+                  Treatment Under Consideration
+              </h3>
+
+              <!-- Field 4: Peptide: -->
+              <div class="space-y-2">
+                <div class="flex items-center gap-3 w-full">
+                   <label class="text-xs font-bold capitalize tracking-wider text-sage whitespace-nowrap">
+                    Peptide
+                  </label>
+                  <input 
+                    type="text" 
+                    id="survey-symptoms-text" 
+                    class="flex-1 bg-transparent border-b-2 border-sage/50 rounded-none px-2 py-1 focus:outline-none focus:border-sage font-medium text-xs text-charcoal" 
+                    placeholder="Enter peptide name..."
+                  >
+                </div>
               </div>
 
+              <!-- Field 5: Proposed purpose: -->
+              <div class="space-y-2">
+                <div class="flex items-center gap-3 w-full">
+                   <label class="text-xs font-bold capitalize tracking-wider text-sage whitespace-nowrap">
+                    Proposed purpose:
+                  </label>
+                  <input 
+                    type="text" 
+                    id="survey-symptoms-text" 
+                    class="flex-1 bg-transparent border-b-2 border-sage/50 rounded-none px-2 py-1 focus:outline-none focus:border-sage font-medium text-xs text-charcoal" 
+                    placeholder="Enter your proposed purpose..."
+                  >
+                </div>
+              </div>
+
+               <!-- Field 6: Route: -->
+              <div class="space-y-2">
+                <div class="flex items-center gap-3 w-full">
+                   <label class="text-xs font-bold capitalize tracking-wider text-sage whitespace-nowrap">
+                    Route:
+                  </label>
+                  <input 
+                    type="text" 
+                    id="survey-symptoms-text" 
+                    class="flex-1 bg-transparent border-b-2 border-sage/50 rounded-none px-2 py-1 focus:outline-none focus:border-sage font-medium text-xs text-charcoal" 
+                    placeholder="Enter your Route..."
+                  >
+                </div>
+              </div>
+
+              <h3 class="text-md font-bold text-charcoal leading-relaxed">
+                Important Information
+              </h3>
+
+              <div>
+                <p class="text-xs text-charcoal/70 font-light leading-relaxed">
+                    I understand that certain peptide therapies may be used outside their FDA-approved indications or may not be FDA-approved for the condition being treated. 
+                </p>
+                </br>
+                <p class="text-xs text-charcoal/70 font-light leading-relaxed">                  
+                    I understand that investigational or unapproved peptide products may not have established FDA-reviewed evidence demonstrating safety, effectiveness, quality, appropriate dosing, or long-term outcomes for my specific condition
+                </p> 
+                </br>
+                <p class="text-xs text-charcoal/70 font-light leading-relaxed">                                    
+                    I understand that FDA has expressed concerns regarding certain unapproved and compounded peptide products, including potential quality, dosing, and safety concerns. 
+                </p>
+              </div>
+
+              <h3 class="text-md font-bold text-charcoal leading-relaxed">
+                Potential Benefits
+              </h3>
+
+              <!-- Field 6: Potential Benefits: -->
+              <div class="space-y-2">
+                <div class="flex items-center gap-3 w-full">
+                   <label class="text-xs font-bold capitalize tracking-wider text-sage whitespace-nowrap">
+                    The potential benefits discussed with me include::
+                  </label>
+                  <input 
+                    type="text" 
+                    id="survey-symptoms-text" 
+                    class="flex-1 bg-transparent border-b-2 border-sage/50 rounded-none px-2 py-1 focus:outline-none focus:border-sage font-medium text-xs text-charcoal" 
+                    placeholder="Enter your potential benefits..."
+                  >
+                </div>
+              </div>
+
+              <div>
+                <p class="text-xs text-charcoal/70 font-light leading-relaxed">                  
+                     I understand that these potential benefits may not be established by adequate clinical evidence and that treatment may not provide the expected benefit.
+                </p> 
+
+              <h3 class="text-md font-bold text-charcoal leading-relaxed">
+                Potential Risks
+              </h3>
+
+              <p class="text-xs text-charcoal/70 font-light leading-relaxed">                  
+                     I understand that known, suspected, or unknown risks may include:
+                </p> 
+
+                <p class="text-xs text-charcoal/70 font-light leading-relaxed">                  
+                    -Injection-site reaction
+                </p> 
+
+                <p class="text-xs text-charcoal/70 font-light leading-relaxed">                  
+                    -Allergic reactions
+                </p> 
+
+                <p class="text-xs text-charcoal/70 font-light leading-relaxed">                  
+                    -Gastrointestinal symptoms
+                </p> 
+
+                <p class="text-xs text-charcoal/70 font-light leading-relaxed">                  
+                    -Changes in blood pressure or blood glucose
+                </p> 
+
+                <p class="text-xs text-charcoal/70 font-light leading-relaxed">                  
+                    -Headache, dizziness, or fatigue
+                </p> 
+
+                <p class="text-xs text-charcoal/70 font-light leading-relaxed">                  
+                    -Medication interactions
+                </p> 
+
+                <p class="text-xs text-charcoal/70 font-light leading-relaxed">                  
+                    -Contamination or product-quality concerns
+                </p> 
+
+                <p class="text-xs text-charcoal/70 font-light leading-relaxed">                  
+                    -Unknown long-term effects
+                </p> 
+
+                <p class="text-xs text-charcoal/70 font-light leading-relaxed">                  
+                    -Other adverse effects that may not yet be known
+                </p> 
+              </div>
+              
+              <h3 class="text-md font-bold text-charcoal leading-relaxed">
+                Alternatives
+              </h3>
+
+              <p class="text-xs text-charcoal/70 font-light leading-relaxed">                  
+                    Alternatives may include FDA-approved treatment, lifestyle intervention, observation, referral to another healthcare professional, or no treatment.
+                </p> 
+
+                 <h3 class="text-md font-bold text-charcoal leading-relaxed">
+                Patient Responsibilitiess
+              </h3>
+
+              <div>
+                <p class="text-xs text-charcoal/70 font-light leading-relaxed">                  
+                  I agree to:
+                </p> 
+
+                <p class="text-xs text-charcoal/70 font-light leading-relaxed">                  
+                  -Provide complete and accurate medical information.
+                </p> 
+
+                <p class="text-xs text-charcoal/70 font-light leading-relaxed">                  
+                    -Follow the prescribed administration instructions.
+                </p> 
+
+                <p class="text-xs text-charcoal/70 font-light leading-relaxed">                  
+                    -Not change the dose without provider approval.
+                </p> 
+
+                <p class="text-xs text-charcoal/70 font-light leading-relaxed">                  
+                    -Report significant or unexpected adverse effects.
+                </p> 
+
+                <p class="text-xs text-charcoal/70 font-light leading-relaxed">                  
+                    -Inform my provider of new medications or medical conditions.
+                </p> 
+
+                <p class="text-xs text-charcoal/70 font-light leading-relaxed">                  
+                    -Seek emergency medical care for serious symptoms.
+                </p>
+              </div>
+
+              <h3 class="text-md font-bold text-charcoal leading-relaxed">
+                Voluntary Consent
+              </h3>
+
+              <p class="text-xs text-charcoal/70 font-light leading-relaxed">                  
+                    I understand that choosing this treatment is voluntary. I have had the opportunity to ask questions and understand that I may decline treatment.
+               </p>
+
+              <p class="text-xs text-charcoal/70 font-light leading-relaxed">                  
+                    I understand that the provider may discontinue or decline treatment if it is determined to be unsafe, inappropriate, unavailable, or unsupported by the patient's clinical circumstances.
+              </p>
+
+              <!-- Field 7: Patient Signature: -->
+              <div class="space-y-2">
+                <div class="flex items-center gap-3 w-full">
+                   <label class="text-xs font-bold capitalize tracking-wider text-sage whitespace-nowrap">
+                    Patient Signature:
+                  </label>
+                  <input 
+                    type="text" 
+                    id="survey-signature" 
+                    class="flex-1 bg-transparent border-b-2 border-sage/50 rounded-none px-2 py-1 focus:outline-none focus:border-sage font-medium text-xs text-charcoal" 
+                    placeholder="Type full name to sign..."
+                  >
+                </div>
+              </div>
+
+              <!-- Field 8: Date: -->
+              <div class="space-y-2">
+                <div class="flex items-center gap-3 w-full">
+                   <label class="text-xs font-bold capitalize tracking-wider text-sage whitespace-nowrap">
+                    Date:
+                  </label>
+                  <input 
+                    type="text" 
+                    id="survey-symptoms-text" 
+                    class="flex-1 bg-transparent border-b-2 border-sage/50 rounded-none px-2 py-1 focus:outline-none focus:border-sage font-medium text-xs text-charcoal" 
+                    placeholder="Enter today's date..."
+                  >
+                </div>
+              </div>
+
+              <!-- Field 9: Provider Signature: -->
+              <div class="space-y-2">
+                <div class="flex items-center gap-3 w-full">
+                   <label class="text-xs font-bold capitalize tracking-wider text-sage whitespace-nowrap">
+                    Provider Signature:
+                  </label>
+                  <input 
+                    type="text" 
+                    id="survey-signature" 
+                    class="flex-1 bg-transparent border-b-2 border-sage/50 rounded-none px-2 py-1 focus:outline-none focus:border-sage font-medium text-xs text-charcoal" 
+                    placeholder="Type full name to sign..."
+                  >
+                </div>
+              </div>
+
+              <!-- Field 10: Date: -->
+              <div class="space-y-2">
+                <div class="flex items-center gap-3 w-full">
+                   <label class="text-xs font-bold capitalize tracking-wider text-sage whitespace-nowrap">
+                    Date:
+                  </label>
+                  <input 
+                    type="text" 
+                    id="survey-symptoms-text" 
+                    class="flex-1 bg-transparent border-b-2 border-sage/50 rounded-none px-2 py-1 focus:outline-none focus:border-sage font-medium text-xs text-charcoal" 
+                    placeholder="Enter today's date..."
+                  >
+                </div>
+              </div>
               <!-- Action Button to Step 2 -->
               <button type="button" onclick="goToBookingStep(2)" class="cursor-pointer w-full py-3.5 bg-sage text-cream font-bold rounded-xl shadow-md hover:bg-sage-dark hover:shadow-lg transition-all duration-200 text-center text-white border-0 flex items-center justify-center space-x-2 text-sm">
                 <span>Continue to Schedule Consultation</span>
                 <i class="ph ph-arrow-right text-base"></i>
               </button>
+
             </div>
 
 
-            <!-- STEP 2: CONSULTATION SCHEDULE & CONTACT DETAILS -->
-            <div id="booking-step-2" class="space-y-4 hidden">
+
+            <!-- STEP 2: WEIGHT MANAGEMENT TREATMENT CONSENT -->
+            <div id="booking-step-2" class="space-y-4">
+              <p class="text-xs text-charcoal/70 font-light leading-relaxed">
+                Mindful Weightloss and Behavioral Health
+              </p>
+ 
+             <!-- Field 1: Patient Name -->
+              <div class="space-y-2">
+                <div class="flex items-center gap-3 w-full">
+                   <label class="text-xs font-bold capitalize tracking-wider text-sage whitespace-nowrap">
+                    Patient Name:
+                  </label>
+                  <input 
+                    type="text" 
+                    id="survey-symptoms-text" 
+                    class="flex-1 bg-transparent border-b-2 border-sage/50 rounded-none px-2 py-1 focus:outline-none focus:border-sage font-medium text-xs text-charcoal" 
+                    placeholder="Please Enter Your Name..."
+                  >
+                </div>
+              </div>
+
+              <!-- Field 2: Date of Birth -->
+              <div class="space-y-2">
+                <div class="flex items-center gap-3 w-full">
+                   <label class="text-xs font-bold capitalize tracking-wider text-sage whitespace-nowrap">
+                    Date of Birth:
+                  </label>
+                  <input 
+                    type="text" 
+                    id="survey-symptoms-text" 
+                    class="flex-1 bg-transparent border-b-2 border-sage/50 rounded-none px-2 py-1 focus:outline-none focus:border-sage font-medium text-xs text-charcoal" 
+                    placeholder="Please Enter Your DoB..."
+                  >
+                </div>
+              </div>
+
+              <!-- Field 3: Date -->
+             <div class="space-y-2">
+                <div class="flex items-center gap-3 w-full">
+                   <label class="text-xs font-bold capitalize tracking-wider text-sage whitespace-nowrap">
+                    Date:
+                  </label>
+                  <input 
+                    type="date" 
+                    id="survey-date" 
+                    class="flex-1 bg-transparent border-b-2 border-sage/50 rounded-none px-2 py-1 focus:outline-none focus:border-sage font-medium text-xs text-charcoal" 
+                  >
+                </div>
+              </div>
+
+              <h3 class="text-md font-bold text-charcoal leading-relaxed">
+                Purpose of Treatment
+              </h3>
+
+              <div>
+                <p class="text-xs text-charcoal/70 font-light leading-relaxed">
+                    I understand that GLP-1 receptor agonist medications and related medications may be recommended as part of a comprehensive treatment plan for weight management and/or metabolic health. Treatment may include an FDA-approved medication when clinically appropriate or, when legally and clinically appropriate, a compounded medication.
+                </p>
+
+                <p class="text-xs text-charcoal/70 font-light leading-relaxed">
+                    I understand that medication selection is based on my medical history, current medications, treatment goals, risks, benefits, and clinical evaluation.
+                </p>
+
+              <h3 class="text-md font-bold text-charcoal leading-relaxed">
+                Potential Benefits
+              </h3>
+
+              <p class="text-xs text-charcoal/70 font-light leading-relaxed">
+                   Potential benefits may include decreased appetite, improved satiety, weight reduction, improved glycemic control when indicated, and improvement in certain metabolic health measures.
+              </p>
+
+              <p class="text-xs text-charcoal/70 font-light leading-relaxed">
+                    I understand that results vary and that medication does not guarantee weight loss or other specific outcomes.
+              </p>
+
+              <h3 class="text-md font-bold text-charcoal leading-relaxed">
+                Potential Risks and Side Effects
+              </h3>
+              
+              <div>
+                <p class="text-xs text-charcoal/70 font-light leading-relaxed">
+                    I understand that potential adverse effects may include:
+                </p>
+
+                <p class="text-xs text-charcoal/70 font-light leading-relaxed">
+                      -Nausea
+                </p>
+
+                <p class="text-xs text-charcoal/70 font-light leading-relaxed">
+                      -Vomiting
+                </p>
+
+                <p class="text-xs text-charcoal/70 font-light leading-relaxed">
+                      -Diarrhea
+                </p>
+
+                <p class="text-xs text-charcoal/70 font-light leading-relaxed">
+                      -Constipation
+                </p>
+
+                <p class="text-xs text-charcoal/70 font-light leading-relaxed">
+                      -Abdominal discomfort or pain
+                </p>
+
+                <p class="text-xs text-charcoal/70 font-light leading-relaxed">
+                      -Reflux
+                </p>
+
+                <p class="text-xs text-charcoal/70 font-light leading-relaxed">
+                      -Dehydration
+                </p>
+
+                <p class="text-xs text-charcoal/70 font-light leading-relaxed">
+                      -Fatigue
+                </p>
+
+                <p class="text-xs text-charcoal/70 font-light leading-relaxed">
+                      -Dizziness
+                </p>
+
+                <p class="text-xs text-charcoal/70 font-light leading-relaxed">
+                      -Gallbladder problems
+                </p>
+
+                <p class="text-xs text-charcoal/70 font-light leading-relaxed">
+                      -Pancreatitis
+                </p>
+
+                <p class="text-xs text-charcoal/70 font-light leading-relaxed">
+                      -Changes in blood glucose
+                </p>
+
+                <p class="text-xs text-charcoal/70 font-light leading-relaxed">
+                      -Allergic reactions
+                </p>
+
+                <p class="text-xs text-charcoal/70 font-light leading-relaxed">
+                      -Other serious or unexpected adverse effects
+                </p>
+
+                <p class="text-xs text-charcoal/70 font-light leading-relaxed">
+                      I understand that severe or persistent abdominal pain, persistent vomiting, severe dehydration, difficulty breathing, swelling of the face/throat, or other serious symptoms require prompt medical evaluation.
+                </p>
+              </div>
+
+              <h3 class="text-md font-bold text-charcoal leading-relaxed">
+                Important Medical Information
+              </h3>
+
+              <p class="text-xs text-charcoal/70 font-light leading-relaxed">
+                       I agree to inform my provider of any changes in my medical condition, pregnancy status, medications, supplements, allergies, or use of other weight-loss medications.
+              </p>
+
+              <p class="text-xs text-charcoal/70 font-light leading-relaxed">
+                      I understand that I should not independently increase, decrease, combine, or otherwise modify my medication without discussing it with my healthcare provider.
+              </p>
+
+              <h3 class="text-md font-bold text-charcoal leading-relaxed">
+                Compounded Medication
+              </h3>
+
+              <p class="text-xs text-charcoal/70 font-light leading-relaxed">
+                     If a compounded medication is prescribed, I understand that compounded medications are not FDAapproved and do not undergo FDA premarket review for safety, effectiveness, or quality. 
+              </p>
+
+              <p class="text-xs text-charcoal/70 font-light leading-relaxed">
+                      I understand that compounded medications may differ in concentration, formulation, packaging, and administration instructions. I agree to follow the pharmacy and provider's specific dosing instructions and to clarify any uncertainty before administering the medication.
+              </p>
+
+              <h3 class="text-md font-bold text-charcoal leading-relaxed">
+                Alternatives
+              </h3>
+
+              <p class="text-xs text-charcoal/70 font-light leading-relaxed">
+                      I understand that alternatives may include lifestyle modification, FDA-approved medications, other medical treatments, referral to another healthcare professional, or no medication treatment.
+              </p>
+
+              <h3 class="text-md font-bold text-charcoal leading-relaxed">
+                Consent
+              </h3>
+
+              <p class="text-xs text-charcoal/70 font-light leading-relaxed">
+                      I have had the opportunity to ask questions and understand the potential benefits, risks, alternatives, and limitations of treatment.
+              </p>
+
+              <p class="text-xs text-charcoal/70 font-light leading-relaxed">
+                     I understand that treatment is not guaranteed and that my provider may determine that a medication is not medically appropriate for me.
+              </p>
+
+              <!-- Field 1: Patient Signature: -->
+              <div class="space-y-2">
+                <div class="flex items-center gap-3 w-full">
+                   <label class="text-xs font-bold capitalize tracking-wider text-sage whitespace-nowrap">
+                    Patient Signature:
+                  </label>
+                  <input 
+                    type="text" 
+                    id="survey-signature" 
+                    class="flex-1 bg-transparent border-b-2 border-sage/50 rounded-none px-2 py-1 focus:outline-none focus:border-sage font-medium text-xs text-charcoal" 
+                    placeholder="Type full name to sign..."
+                  >
+                </div>
+              </div>
+
+              <!-- Field 2: Date: -->
+              <div class="space-y-2">
+                <div class="flex items-center gap-3 w-full">
+                   <label class="text-xs font-bold capitalize tracking-wider text-sage whitespace-nowrap">
+                    Date:
+                  </label>
+                  <input 
+                    type="text" 
+                    id="survey-symptoms-text" 
+                    class="flex-1 bg-transparent border-b-2 border-sage/50 rounded-none px-2 py-1 focus:outline-none focus:border-sage font-medium text-xs text-charcoal" 
+                    placeholder="Enter today's date..."
+                  >
+                </div>
+              </div>
+
+              <!-- Field 3: Provider Signature: -->
+              <div class="space-y-2">
+                <div class="flex items-center gap-3 w-full">
+                   <label class="text-xs font-bold capitalize tracking-wider text-sage whitespace-nowrap">
+                    Provider Signature:
+                  </label>
+                  <input 
+                    type="text" 
+                    id="survey-signature" 
+                    class="flex-1 bg-transparent border-b-2 border-sage/50 rounded-none px-2 py-1 focus:outline-none focus:border-sage font-medium text-xs text-charcoal" 
+                    placeholder="Type full name to sign..."
+                  >
+                </div>
+              </div>
+
+              <!-- Field 4: Date: -->
+              <div class="space-y-2">
+                <div class="flex items-center gap-3 w-full">
+                   <label class="text-xs font-bold capitalize tracking-wider text-sage whitespace-nowrap">
+                    Date:
+                  </label>
+                  <input 
+                    type="text" 
+                    id="survey-symptoms-text" 
+                    class="flex-1 bg-transparent border-b-2 border-sage/50 rounded-none px-2 py-1 focus:outline-none focus:border-sage font-medium text-xs text-charcoal" 
+                    placeholder="Enter today's date..."
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- STEP 3:  Peptide Therapy Health Screening Form -->
+            <div id="booking-step-3" class="space-y-4">
+              <p class="text-xs text-charcoal/70 font-light leading-relaxed">
+                For initial screening and clinical review
+              </p>
+ 
+             <!-- Field 1: Patient Name -->
+              <div class="space-y-2">
+                <div class="flex items-center gap-3 w-full">
+                   <label class="text-xs font-bold capitalize tracking-wider text-sage whitespace-nowrap">
+                    Patient Name:
+                  </label>
+                  <input 
+                    type="text" 
+                    id="survey-symptoms-text" 
+                    class="flex-1 bg-transparent border-b-2 border-sage/50 rounded-none px-2 py-1 focus:outline-none focus:border-sage font-medium text-xs text-charcoal" 
+                    placeholder="Please Enter Your Name..."
+                  >
+                </div>
+              </div>
+
+              <!-- Field 2: Date of Birth -->
+              <div class="space-y-2">
+                <div class="flex items-center gap-3 w-full">
+                   <label class="text-xs font-bold capitalize tracking-wider text-sage whitespace-nowrap">
+                    Date of Birth:
+                  </label>
+                  <input 
+                    type="text" 
+                    id="survey-symptoms-text" 
+                    class="flex-1 bg-transparent border-b-2 border-sage/50 rounded-none px-2 py-1 focus:outline-none focus:border-sage font-medium text-xs text-charcoal" 
+                    placeholder="Please Enter Your DoB..."
+                  >
+                </div>
+              </div>
+
+              <!-- Field 3: Date -->
+             <div class="space-y-2">
+                <div class="flex items-center gap-3 w-full">
+                   <label class="text-xs font-bold capitalize tracking-wider text-sage whitespace-nowrap">
+                    Date:
+                  </label>
+                  <input 
+                    type="date" 
+                    id="survey-date" 
+                    class="flex-1 bg-transparent border-b-2 border-sage/50 rounded-none px-2 py-1 focus:outline-none focus:border-sage font-medium text-xs text-charcoal" 
+                    placeholder="Please enter today's date..."
+                    >
+                </div>
+              </div>
+
+              <!-- Field 4: Phone Number
+             <div class="space-y-2">
+                <div class="flex items-center gap-3 w-full">
+                   <label class="text-xs font-bold capitalize tracking-wider text-sage whitespace-nowrap">
+                    Phone Number:
+                  </label>
+                  <input 
+                    type="date" 
+                    id="survey-date" 
+                    class="flex-1 bg-transparent border-b-2 border-sage/50 rounded-none px-2 py-1 focus:outline-none focus:border-sage font-medium text-xs text-charcoal" 
+                    placeholder="Please Enter Phone Number..."
+                    >
+                </div>
+              </div> 
+            </div>
+
+            <!-- STEP 4: CONSULTATION SCHEDULE & CONTACT DETAILS -->
+            <div id="booking-step-4" class="space-y-4 hidden">
               
               <!-- Interactive Service Card Selector -->
               <div class="space-y-1.5">
@@ -1276,7 +1817,6 @@
                 </button>
               </div>
             </div>
-
           </form>
         </div>
 
@@ -1391,21 +1931,6 @@
     </div>
   </div>
 
-  <!-- FLOATING CONTROLS & TOAST NOTIFICATION CONTAINER -->
-  <div id="toast-container" class="fixed top-6 right-6 z-50 flex flex-col space-y-2 pointer-events-none"></div>
-
-  <!-- Floating Quick Consultation CTA (Mobile & Desktop on scroll) -->
-  <div id="floating-cta" class="fixed bottom-6 left-6 z-40 transition-all duration-300 opacity-0 translate-y-10 pointer-events-none">
-    <button onclick="openBookingModal()" class="cursor-pointer px-5 py-3 bg-coral text-cream font-semibold rounded-full shadow-xl hover:bg-coral-dark hover:scale-105 active:scale-95 transition-all text-sm flex items-center space-x-2 text-white border-0 pointer-events-auto">
-      <i class="ph ph-calendar-blank text-base"></i>
-      <span>Book Consultation</span>
-    </button>
-  </div>
-
-  <!-- Floating Scroll To Top Button -->
-  <button id="scroll-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-6 right-6 z-40 p-3 bg-sage text-cream rounded-full shadow-lg hover:bg-sage-dark hover:scale-110 active:scale-95 transition-all opacity-0 translate-y-10 pointer-events-none cursor-pointer border-0 text-white" aria-label="Scroll to Top">
-    <i class="ph ph-arrow-up text-xl"></i>
-  </button>
 
   <!-- JAVASCRIPT CODE -->
   <script>
@@ -1755,17 +2280,17 @@
       if (step === 1) {
         step1El.classList.remove('hidden');
         step2El.classList.add('hidden');
-        badgeEl.textContent = "Step 1 of 2";
-        headingEl.textContent = "Health Screening Survey";
-        percentEl.textContent = "50% Completed";
-        progressBar.style.width = "50%";
+        badgeEl.textContent = "Step 1 of 3";
+        headingEl.textContent = "Investigational Peptide Therapy Consent";
+        percentEl.textContent = "25% Completed";
+        progressBar.style.width = "25%";
       } else if (step === 2) {
         step1El.classList.add('hidden');
         step2El.classList.remove('hidden');
-        badgeEl.textContent = "Step 2 of 2";
+        badgeEl.textContent = "Step 2 of 3";
         headingEl.textContent = "Schedule & Contact Details";
-        percentEl.textContent = "100% Completed";
-        progressBar.style.width = "100%";
+        percentEl.textContent = "50% Completed";
+        progressBar.style.width = "50%";
       }
     }
 
